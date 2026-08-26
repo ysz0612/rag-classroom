@@ -1,0 +1,509 @@
+/* =========================================================
+   GLOBAL FAIRY ASSISTANT
+========================================================= */
+
+.global-fairy-assistant {
+    position: fixed;
+
+    right: 28px;
+    bottom: 115px;
+
+    z-index: 9000;
+
+    width: 175px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SPEECH BUBBLE
+========================================================= */
+
+.fairy-speech-bubble {
+    position: absolute;
+
+    right: 145px;
+    bottom: 72px;
+
+    width: 150px;
+
+    margin: 0;
+
+    padding: 13px 15px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #526c72;
+
+    background: #f7f2e7;
+
+    box-shadow:
+            5px 5px 0
+            rgba(38, 54, 58, 0.18);
+
+    color: #40575e;
+
+    pointer-events: auto;
+
+    animation:
+            fairyBubbleIn
+            180ms ease-out;
+}
+
+
+.fairy-bubble-label {
+    margin-bottom: 6px;
+
+    color: #71878c;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+}
+
+
+.fairy-speech-bubble p {
+    margin: 0;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.6;
+
+    word-break: keep-all;
+}
+
+
+.fairy-bubble-tail {
+    position: absolute;
+
+    right: -8px;
+    bottom: 13px;
+
+    width: 14px;
+    height: 14px;
+
+    border-right:
+            2px solid #526c72;
+
+    border-bottom:
+            2px solid #526c72;
+
+    background: #f7f2e7;
+
+    transform:
+            rotate(-45deg);
+}
+
+
+/* =========================================================
+   STATES
+========================================================= */
+
+.fairy-speech-bubble.listening {
+    border-color: #70898f;
+
+    background: #f2f5ef;
+}
+
+
+.fairy-speech-bubble.awake {
+    border-color: #518593;
+
+    background: #e6f2f4;
+}
+
+
+.fairy-speech-bubble.processing {
+    border-color: #827e62;
+
+    background: #f4efd8;
+}
+
+
+.fairy-speech-bubble.error {
+    border-color: #9e6a61;
+
+    background: #f8e9e5;
+}
+
+
+.fairy-speech-bubble.error
+.fairy-bubble-label {
+    color: #975e55;
+}
+
+
+/* =========================================================
+   FAIRY CHARACTER
+========================================================= */
+
+.fairy-character {
+    position: relative;
+
+    width: 128px;
+    height: 128px;
+
+    transition:
+            transform
+            180ms ease;
+}
+
+
+.fairy-character.awake {
+    animation:
+            fairyAwake
+            900ms ease-in-out
+            infinite alternate;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.fairy-image-placeholder {
+    width: 112px;
+    height: 112px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border:
+            2px dashed
+            rgba(78, 101, 108, 0.48);
+
+    border-radius: 50%;
+
+    background:
+            rgba(
+                    244,
+                    240,
+                    229,
+                    0.94
+            );
+
+    box-shadow:
+            0 8px 18px
+            rgba(
+                    33,
+                    47,
+                    51,
+                    0.18
+            );
+}
+
+
+.fairy-image-placeholder > span {
+    font-size: 43px;
+
+    line-height: 1;
+}
+
+
+.fairy-image-placeholder small {
+    margin-top: 5px;
+
+    color: #71868b;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   나중에 실제 이미지
+========================================================= */
+
+.fairy-character > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   MIC STATE
+========================================================= */
+
+.fairy-mic-state {
+    position: absolute;
+
+    right: 0;
+    bottom: 3px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border:
+            2px solid #526c72;
+
+    border-radius: 50%;
+
+    background: #f7f2e7;
+
+    color: #526c72;
+
+    box-shadow:
+            3px 3px 0
+            rgba(38, 54, 58, 0.18);
+
+    font-size: 14px;
+}
+
+
+.fairy-mic-state.listening {
+    border-color: #6d888f;
+
+    color: #617d84;
+
+    background: #edf2ee;
+}
+
+
+.fairy-mic-state.awake {
+    border-color: #548492;
+
+    background: #d8ebef;
+
+    color: #3f6d78;
+}
+
+
+.fairy-mic-state.processing {
+    border-color: #7c795f;
+
+    background: #eee8ce;
+
+    color: #6b6850;
+}
+
+
+.fairy-mic-state.error {
+    border-color: #9d6b62;
+
+    background: #f4ded8;
+
+    color: #8d574e;
+}
+
+
+/* =========================================================
+   STATUS LIGHT
+========================================================= */
+
+.fairy-status-light {
+    position: absolute;
+
+    right: 6px;
+    bottom: -2px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #899295;
+}
+
+
+.fairy-status-light.active {
+    background: #569d7d;
+
+    box-shadow:
+            0 0 8px
+            rgba(
+                    86,
+                    157,
+                    125,
+                    0.85
+            );
+}
+
+
+.fairy-status-light.error {
+    background: #a35c55;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fairyBubbleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+                translateY(5px)
+                scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+                translateY(0)
+                scale(1);
+    }
+
+}
+
+
+@keyframes fairyAwake {
+
+    from {
+        transform:
+                translateY(0);
+    }
+
+    to {
+        transform:
+                translateY(-6px);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+max-width: 720px
+) {
+
+    .global-fairy-assistant {
+        right: 12px;
+        bottom: 12px;
+    }
+
+
+    .fairy-character {
+        width: 96px;
+        height: 96px;
+    }
+
+
+    .fairy-image-placeholder {
+        width: 84px;
+        height: 84px;
+    }
+
+
+    .fairy-image-placeholder > span {
+        font-size: 32px;
+    }
+
+
+    .fairy-speech-bubble {
+        width: 215px;
+
+        margin-right: 18px;
+    }
+
+}
+
+/* 실험실에서는 결과 모니터를 가리지 않는 상단 빈 공간에 배치 */
+.global-fairy-assistant--lab {
+    top: 118px;
+    right: 22px;
+    bottom: auto;
+    width: 145px;
+}
+
+.global-fairy-assistant--lab .fairy-character {
+    width: 138px;
+    height: 138px;
+}
+
+.global-fairy-assistant--lab .fairy-speech-bubble {
+    right: 118px;
+    bottom: 55px;
+    width: 165px;
+}
+/* =========================================================
+   GLOBAL ARI MODE
+   기존 원형 요정을 아리 이미지로 교체하고 마이크 기능을 유지합니다.
+========================================================= */
+
+.fairy-image-placeholder {
+    display: none !important;
+}
+
+.fairy-character {
+    width: 165px;
+    height: 165px;
+}
+
+.fairy-mic-state {
+    right: 0;
+    bottom: 0;
+}
+
+.global-ari-character-image {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+    pointer-events: none;
+}
+
+@media (max-width: 720px) {
+    .global-fairy-assistant {
+        right: 12px;
+        bottom: 88px;
+        width: 125px;
+    }
+
+    .fairy-character {
+        width: 125px;
+        height: 125px;
+    }
+
+    .fairy-speech-bubble {
+        right: 105px;
+        bottom: 55px;
+        width: 135px;
+        margin: 0;
+    }
+}

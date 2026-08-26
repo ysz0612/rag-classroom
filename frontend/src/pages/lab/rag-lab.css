@@ -1,0 +1,1219 @@
+/* =========================================================
+   RAG LAB
+========================================================= */
+
+.rag-lab-page {
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding-bottom: 34px;
+
+    background:
+            linear-gradient(
+                    rgba(255, 255, 255, 0.03) 1px,
+                    transparent 1px
+            ),
+            linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.03) 1px,
+                    transparent 1px
+            ),
+            #d8d3c5;
+
+    background-size:
+            28px 28px;
+
+    color: #35484b;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.lab-header {
+    height: 72px;
+
+    padding:
+            0 34px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    border-bottom:
+            4px solid #3f5356;
+
+    background: #eee9dc;
+
+    box-shadow:
+            0 5px 0
+            rgba(45, 60, 63, 0.14);
+}
+
+
+.lab-header-left {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.lab-header-left > span {
+    font-size: 27px;
+
+    color: #4d676b;
+}
+
+
+.lab-header-left div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.lab-header-left small {
+    color: #849093;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.lab-header-left strong {
+    margin-top: 2px;
+
+    color: #3c5357;
+
+    font-size: 15px;
+
+    letter-spacing: 0.5px;
+}
+
+
+.lab-header-status {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #6c7b7d;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.lab-header-status b {
+    color: #4f7967;
+}
+
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #67987d;
+
+    box-shadow:
+            0 0 8px
+            rgba(103, 152, 125, 0.7);
+}
+
+
+.lab-home-button {
+    margin-left: 22px;
+
+    padding:
+            8px 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    border:
+            2px solid #53676a;
+
+    background: #f6f1e5;
+
+    color: #53676a;
+
+    cursor: pointer;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   MAIN WIDTH
+   좌우 여백 줄이기
+========================================================= */
+
+.lab-intro,
+.lab-question-console,
+.rag-monitor-grid,
+.lab-footer {
+    width:
+            calc(100% - 80px);
+
+    max-width:
+            1580px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.lab-intro {
+    margin:
+            26px auto 16px;
+
+    padding:
+            0 6px;
+
+    box-sizing: border-box;
+}
+
+
+.lab-intro-number {
+    display: inline-block;
+
+    margin-bottom: 7px;
+
+    padding:
+            4px 7px;
+
+    border:
+            2px solid #607477;
+
+    color: #607477;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.lab-intro h1 {
+    margin: 0;
+
+    color: #344a4e;
+
+    font-size:
+            clamp(
+                    26px,
+                    2.4vw,
+                    38px
+            );
+
+    line-height: 1.08;
+}
+
+
+.lab-intro-title-accent {
+    display: inline-block;
+
+    padding-left: 2px;
+
+    color: #557074;
+
+    font: inherit;
+
+    font-weight: 700;
+
+    overflow: visible;
+}
+
+
+.lab-intro p {
+    max-width: 760px;
+
+    margin:
+            9px 0 0;
+
+    color: #68787a;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   QUESTION CONSOLE
+========================================================= */
+
+.lab-question-console {
+    margin:
+            0 auto 16px;
+
+    border:
+            3px solid #465b5e;
+
+    background: #e9e4d7;
+
+    box-shadow:
+            7px 7px 0
+            rgba(48, 62, 65, 0.17);
+}
+
+
+.question-console-header {
+    height: 30px;
+
+    padding:
+            0 12px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    border-bottom:
+            2px solid #465b5e;
+
+    background: #566b6e;
+
+    color: #eae7dd;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.question-console-header > div {
+    display: flex;
+
+    gap: 5px;
+}
+
+
+.console-light {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #d7d0bd;
+}
+
+
+.console-light.red {
+    background: #b7786d;
+}
+
+
+.console-light.yellow {
+    background: #c4a96c;
+}
+
+
+.console-light.green {
+    background: #75967c;
+}
+
+
+.question-console-header strong {
+    margin-left: 13px;
+}
+
+
+.question-console-header > span:last-child {
+    margin-left: auto;
+
+    color: #c9ddcf;
+}
+
+
+.question-input-area {
+    padding:
+            12px 14px 10px;
+
+    display: grid;
+
+    grid-template-columns:
+        38px
+        1fr
+        auto
+        40px;
+
+    gap: 9px;
+}
+
+
+.question-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+            2px solid #607376;
+
+    background: #d7d3c7;
+
+    color: #536a6e;
+
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+
+.question-input-area textarea {
+    min-height: 54px;
+
+    padding:
+            10px 13px;
+
+    box-sizing: border-box;
+
+    resize: none;
+
+    outline: none;
+
+    border:
+            2px solid #8b9592;
+
+    background: #f7f4eb;
+
+    color: #34484b;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+}
+
+
+.question-input-area textarea:focus {
+    border-color: #536f74;
+}
+
+
+.run-experiment-button,
+.reset-experiment-button {
+    border:
+            2px solid #52686b;
+
+    background: #52686b;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-weight: 900;
+}
+
+
+.run-experiment-button {
+    min-width: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+.run-experiment-button:disabled {
+    opacity: 0.45;
+
+    cursor: default;
+}
+
+
+.reset-experiment-button {
+    background: #e5e0d4;
+
+    color: #52686b;
+
+    font-size: 14px;
+}
+
+
+.question-hint {
+    padding:
+            0 14px 9px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #7b8585;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+.question-hint span {
+    padding:
+            3px 5px;
+
+    border:
+            1px solid #909997;
+
+    background: #f2eee4;
+
+    color: #687678;
+}
+
+
+.question-hint i {
+    width: 3px;
+    height: 3px;
+
+    margin:
+            0 5px;
+
+    border-radius: 50%;
+
+    background: #84908e;
+}
+
+
+/* =========================================================
+   MONITOR GRID
+   질문창 바로 아래로 끌어올림
+========================================================= */
+
+.rag-monitor-grid {
+    margin:
+            0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+}
+
+
+.rag-monitor {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.monitor-case {
+    width: 100%;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+    border:
+            4px solid #3f5053;
+
+    border-radius: 7px;
+
+    background: #788184;
+
+    box-shadow:
+            7px 8px 0
+            rgba(48, 59, 61, 0.2);
+}
+
+
+.monitor-top {
+    height: 40px;
+
+    padding:
+            0 6px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+}
+
+
+.monitor-top > div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.monitor-top span {
+    color: #d9ddd6;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.monitor-top strong {
+    margin-top: 1px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.monitor-state {
+    margin-left: auto;
+
+    padding:
+            4px 6px;
+
+    border:
+            1px solid #aab2ae;
+
+    color: #d8dcd7 !important;
+}
+
+
+.monitor-state.running {
+    color: #efe3a9 !important;
+
+    border-color: #d5c783;
+}
+
+
+.monitor-state.complete {
+    color: #c8e3ce !important;
+
+    border-color: #8fb49a;
+}
+
+
+/* =========================================================
+   SCREEN
+   높이 축소해서 한 화면에 더 많이 보이게
+========================================================= */
+
+.monitor-screen {
+    position: relative;
+
+    height:
+            clamp(
+                    270px,
+                    31vh,
+                    330px
+            );
+
+    overflow: hidden;
+
+    border:
+            4px solid #303c3e;
+
+    border-radius: 4px;
+
+    background:
+            radial-gradient(
+                    circle at center,
+                    #203537,
+                    #142426 75%
+            );
+
+    color: #c9ddd7;
+
+    box-shadow:
+            inset 0 0 24px
+            rgba(0, 0, 0, 0.55);
+}
+
+
+.keyword
+.monitor-screen {
+    color: #e1d6a6;
+}
+
+
+.vector
+.monitor-screen {
+    color: #b9d8d8;
+}
+
+
+.graph
+.monitor-screen {
+    color: #c7d6b3;
+}
+
+
+.screen-scanline {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    opacity: 0.08;
+
+    background:
+            repeating-linear-gradient(
+                    to bottom,
+                    transparent 0,
+                    transparent 3px,
+                    #ffffff 4px
+            );
+}
+
+
+/* =========================================================
+   IDLE
+========================================================= */
+
+.monitor-idle {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.idle-symbol {
+    margin-bottom: 13px;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 31px;
+
+    font-weight: 900;
+
+    animation:
+            screenBlink
+            1.2s steps(2)
+            infinite;
+}
+
+
+.monitor-idle strong {
+    font-size: 15px;
+}
+
+
+.monitor-idle p {
+    margin:
+            7px 0 18px;
+
+    opacity: 0.7;
+
+    font-size: 9px;
+}
+
+
+.monitor-idle small {
+    opacity: 0.45;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.monitor-process {
+    position: relative;
+
+    z-index: 2;
+
+    height: 100%;
+
+    padding:
+            16px 15px;
+
+    box-sizing: border-box;
+}
+
+
+.process-title {
+    padding-bottom: 9px;
+
+    border-bottom:
+            1px solid
+            currentColor;
+
+    opacity: 0.8;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+}
+
+
+.process-steps {
+    margin-top: 11px;
+}
+
+
+.process-step {
+    height: 31px;
+
+    display: grid;
+
+    grid-template-columns:
+        28px
+        12px
+        1fr
+        20px;
+
+    align-items: center;
+
+    opacity: 0.25;
+
+    font-size: 9px;
+
+    transition:
+            250ms ease;
+}
+
+
+.process-step.active {
+    opacity: 1;
+
+    transform:
+            translateX(4px);
+}
+
+
+.process-step.done {
+    opacity: 0.65;
+}
+
+
+.step-number {
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+}
+
+
+.process-step i {
+    width: 5px;
+    height: 5px;
+
+    border:
+            1px solid
+            currentColor;
+
+    border-radius: 50%;
+}
+
+
+.process-step.active i,
+.process-step.done i {
+    background:
+            currentColor;
+}
+
+
+.process-step strong {
+    font-size: 9px;
+}
+
+
+.process-step b {
+    text-align: center;
+
+    font-size: 11px;
+}
+
+
+.monitor-result-ready {
+    margin-top: 8px;
+
+    padding:
+            7px;
+
+    border:
+            1px solid
+            currentColor;
+
+    text-align: center;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    animation:
+            resultAppear
+            250ms ease-out;
+}
+
+
+/* =========================================================
+   MONITOR CONTROLS
+========================================================= */
+
+.monitor-controls {
+    height: 30px;
+
+    padding:
+            0 6px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.monitor-controls > span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #3c4c4e;
+
+    box-shadow:
+            inset 1px 1px 0
+            rgba(255, 255, 255, 0.15);
+}
+
+
+.monitor-power {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color: #d5d8d2;
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.monitor-power i {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #4a5455;
+}
+
+
+.monitor-power i.on {
+    background: #8eb293;
+
+    box-shadow:
+            0 0 6px
+            rgba(142, 178, 147, 0.7);
+}
+
+
+/* =========================================================
+   MONITOR STAND
+   너무 아래로 내려가는 느낌 줄임
+========================================================= */
+
+.monitor-neck {
+    width: 38px;
+    height: 10px;
+
+    border-left:
+            4px solid #3f5053;
+
+    border-right:
+            4px solid #3f5053;
+
+    background: #747d7e;
+}
+
+
+.monitor-base {
+    width: 108px;
+    height: 8px;
+
+    border:
+            4px solid #3f5053;
+
+    border-radius:
+            3px 3px 0 0;
+
+    background: #747d7e;
+
+    box-shadow:
+            4px 4px 0
+            rgba(48, 59, 61, 0.16);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.lab-footer {
+    margin:
+            20px auto 0;
+
+    padding-top: 13px;
+
+    display: flex;
+    align-items: center;
+
+    border-top:
+            2px solid
+            rgba(69, 87, 90, 0.28);
+
+    color: #687779;
+
+    font-size: 9px;
+}
+
+
+.lab-footer > span {
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+}
+
+
+.lab-footer p {
+    margin:
+            0 0 0 18px;
+}
+
+
+.lab-footer div {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    font-weight: 900;
+}
+
+
+.lab-footer i {
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #738385;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes screenBlink {
+
+    50% {
+        opacity: 0.35;
+    }
+
+}
+
+
+@keyframes resultAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+                translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+                translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (
+min-width: 1600px
+) {
+
+    .lab-intro,
+    .lab-question-console,
+    .rag-monitor-grid,
+    .lab-footer {
+        width:
+                calc(100% - 120px);
+
+        max-width:
+                1640px;
+    }
+
+
+    .rag-monitor-grid {
+        gap: 18px;
+    }
+
+
+    .monitor-screen {
+        height:
+                320px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (
+max-width: 1100px
+) {
+
+    .lab-intro,
+    .lab-question-console,
+    .rag-monitor-grid,
+    .lab-footer {
+        width:
+                calc(100% - 40px);
+    }
+
+
+    .rag-monitor-grid {
+        grid-template-columns:
+            1fr;
+
+        gap: 18px;
+    }
+
+
+    .monitor-screen {
+        height: 300px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+max-width: 700px
+) {
+
+    .lab-header {
+        padding:
+                0 14px;
+    }
+
+
+    .lab-header-status {
+        display: none;
+    }
+
+
+    .lab-intro {
+        margin-top: 18px;
+    }
+
+
+    .question-input-area {
+        grid-template-columns:
+            34px
+            1fr;
+    }
+
+
+    .run-experiment-button {
+        grid-column:
+                1 / 3;
+
+        min-height: 40px;
+    }
+
+
+    .reset-experiment-button {
+        display: none;
+    }
+
+}

@@ -1,0 +1,284 @@
+.rag-choice-example { height:100%; box-sizing:border-box; padding:20px 32px; background:#f7f4ed; color:#243d48; }
+.rag-choice-heading { display:flex; align-items:flex-start; gap:16px; margin-bottom:14px; }
+.rag-choice-heading>span { color:#b56a45; font:900 32px Consolas,monospace; }
+.rag-choice-heading small,.rag-choice-question small,.rag-choice-answer>span { font:900 10px Consolas,monospace; letter-spacing:1.6px; }
+.rag-choice-heading h1 { margin:3px 0 0; font-size:clamp(28px,2.6vw,42px); line-height:1.1; }
+.rag-choice-question { display:grid; grid-template-columns:70px minmax(240px,1fr) 45px minmax(300px,1.15fr); align-items:center; gap:14px; padding:12px 18px; border:2px solid #657b80; background:#fffdfa; }
+.rag-choice-customer { display:grid; place-items:center; width:62px; height:62px; border-radius:50%; background:#eee5d2; font-size:38px; }
+.rag-choice-question>strong { font-size:clamp(19px,1.8vw,27px); line-height:1.3; }
+.rag-choice-question>span { color:#a47b54; font-size:34px; font-weight:900; }
+.rag-choice-question>div:last-child { display:flex; flex-direction:column; gap:5px; }
+.rag-choice-question b { font-size:clamp(17px,1.45vw,23px); }
+.rag-choice-candidates { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:14px; }
+.rag-choice-candidates article { position:relative; box-sizing:border-box; min-width:0; min-height:220px; padding:14px 16px 15px; border:3px solid #879495; background:#fffdfa; box-shadow:5px 5px 0 rgba(48,65,69,.12); text-align:center; }
+.rag-choice-candidates article.selected { border-color:#b18b35; background:#fff8d8; box-shadow:6px 6px 0 rgba(177,139,53,.22); }
+.candidate-id { position:absolute; left:12px; top:10px; font:900 12px Consolas,monospace; }
+.candidate-check { position:absolute; right:10px; top:8px; padding:4px 8px; background:#647f68; color:#fff; font-size:12px; font-weight:900; }
+.candidate-icon { margin:24px 0 4px; font-size:44px; }
+.rag-choice-candidates h2 { margin:3px 0 7px; font-size:clamp(18px,1.55vw,24px); line-height:1.25; }
+.rag-choice-candidates p { margin:0 0 9px; color:#68797c; font-size:clamp(14px,1.15vw,18px); font-weight:700; }
+.rag-choice-candidates article>strong { display:inline-block; padding:5px 9px; border:1px solid #8ca0a0; background:#eaf0ed; font-size:clamp(14px,1.15vw,18px); }
+.rag-choice-candidates .selected>strong { border-color:#b69a42; background:#ffe989; }
+.rag-choice-answer { display:grid; grid-template-columns:auto auto 38px 1fr; align-items:center; gap:13px; margin-top:14px; padding:13px 18px; border:2px solid #637c82; background:#e5eee8; }
+.rag-choice-answer strong { color:#9a613b; font-size:23px; }
+.rag-choice-answer i { font-size:27px; font-style:normal; }
+.rag-choice-answer p { margin:0; font-size:clamp(17px,1.55vw,23px); font-weight:900; }
+.rag-choice-example.vector .selected { border-color:#5f8791; background:#eaf4f5; }
+.rag-choice-example.vector .selected>strong { border-color:#5f8791; background:#cfe6e9; }
+.rag-choice-example.graph .selected { border-color:#618066; background:#e9f2e5; }
+.rag-choice-example.graph .selected>strong { border-color:#618066; background:#cfe5c8; }
+@media(max-width:1050px){.rag-choice-example{padding:15px}.rag-choice-question{grid-template-columns:55px 1fr 30px 1fr}.rag-choice-candidates{gap:10px}.rag-choice-candidates article{padding-inline:9px}}
+/* rag-example-page.css 맨 아래에 추가하세요. */
+.graph-path-example {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 18px 38px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.graph-path-example .rag-choice-heading {
+    margin-bottom: 10px;
+}
+
+.graph-path-example .rag-choice-heading > span {
+    font-size: 30px;
+}
+
+.graph-path-example .rag-choice-heading h1 {
+    margin: 2px 0 0;
+    font-size: clamp(32px, 2.7vw, 44px);
+    line-height: 1.05;
+}
+
+.graph-example-question {
+    display: grid;
+    grid-template-columns: 64px minmax(320px, 0.9fr) 56px minmax(420px, 1.1fr);
+    align-items: center;
+    gap: 18px;
+    min-height: 76px;
+    padding: 10px 18px;
+    border: 2px solid #657c82;
+    background: #fffdf8;
+}
+
+.graph-example-question > strong {
+    font-size: clamp(19px, 1.45vw, 27px);
+    line-height: 1.25;
+    color: #173746;
+}
+
+.graph-example-question > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.graph-example-question small,
+.graph-example-node small {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #6b6257;
+}
+
+.graph-example-question b {
+    font-size: clamp(15px, 1.1vw, 20px);
+    line-height: 1.3;
+    color: #173746;
+}
+
+.graph-question-arrow {
+    font-size: 34px;
+    font-weight: 800;
+    color: #ad7b4d;
+    text-align: center;
+}
+
+.graph-selection-stage {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-rows: 176px 48px;
+    gap: 10px;
+    min-height: 0;
+    padding: 12px 0 10px;
+}
+
+.graph-main-path {
+    display: grid;
+    grid-template-columns: minmax(145px, 1fr) 92px minmax(170px, 1.15fr) 92px minmax(145px, 1fr) 92px minmax(180px, 1.2fr);
+    align-items: center;
+    gap: 6px;
+}
+
+.graph-example-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    height: 150px;
+    padding: 10px 10px;
+    border: 3px solid #75878a;
+    border-radius: 50%;
+    background: #fffdf8;
+    box-shadow: 6px 6px 0 rgba(35, 54, 61, 0.13);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.graph-example-node > div {
+    margin: 5px 0 3px;
+    font-size: 29px;
+    line-height: 1;
+}
+
+.graph-example-node > strong {
+    font-size: clamp(15px, 1vw, 19px);
+    line-height: 1.2;
+    color: #173746;
+}
+
+.graph-example-node > p {
+    margin: 5px 0 0;
+    font-size: 11px;
+    line-height: 1.25;
+    color: #61737a;
+}
+
+.graph-example-node.user {
+    border-color: #567b91;
+    background: #edf6fa;
+}
+
+.graph-example-node.reviewed {
+    border-color: #b68b42;
+    background: #fff7d9;
+}
+
+.graph-example-node.category {
+    border-color: #78966e;
+    background: #edf5e9;
+}
+
+.graph-example-node.result {
+    border-color: #618267;
+    background: #e6f2e3;
+}
+
+.graph-example-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 5px 9px;
+    background: #628169;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.graph-example-edge {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    gap: 2px;
+    color: #9a714a;
+    text-align: center;
+}
+
+.graph-example-edge span {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.graph-example-edge b {
+    font-size: 34px;
+    line-height: 0.9;
+}
+
+.graph-example-edge small {
+    font-size: 12px;
+    font-weight: 800;
+    color: #68777a;
+}
+
+.graph-other-products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.graph-other-products article {
+    display: grid;
+    grid-template-columns: 70px minmax(180px, 0.8fr) 1fr auto;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    height: 48px;
+    padding: 6px 14px;
+    border: 2px solid #a5ada9;
+    background: #f4f2ec;
+    color: #536166;
+}
+
+.graph-other-products article > span,
+.graph-other-products article > em {
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.graph-other-products article > b {
+    font-size: 16px;
+    color: #334b55;
+}
+
+.graph-other-products article > p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.graph-other-products article > em {
+    padding: 5px 8px;
+    border: 1px solid #9a6d64;
+    color: #955d53;
+    font-style: normal;
+}
+
+.graph-path-answer {
+    min-height: 52px;
+    height: 52px;
+    margin-top: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+.graph-path-answer strong {
+    font-size: clamp(20px, 1.45vw, 27px);
+}
+
+.graph-path-answer p {
+    font-size: clamp(16px, 1.15vw, 21px);
+}
+
+@media (max-width: 1250px) {
+    .graph-path-example {
+        padding: 14px 24px 12px;
+    }
+
+    .graph-main-path {
+        grid-template-columns: minmax(125px, 1fr) 64px minmax(145px, 1.1fr) 64px minmax(125px, 1fr) 64px minmax(155px, 1.15fr);
+    }
+
+    .graph-example-node {
+        min-height: 138px;
+        height: 138px;
+    }
+
+    .graph-example-edge b {
+        font-size: 32px;
+    }
+}

@@ -1,0 +1,158 @@
+.voice-help-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 13000;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+}
+
+.voice-help-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(16, 27, 37, 0.82);
+}
+
+.voice-help-modal {
+    position: relative;
+    width: min(1420px, 96vw);
+    max-height: 92vh;
+    overflow: auto;
+    border: 5px solid #27313f;
+    background: #f6f2e9;
+    box-shadow: 14px 14px 0 rgba(0, 0, 0, 0.3);
+    color: #17354a;
+}
+
+.voice-help-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 28px;
+    background: #3f5878;
+    color: #fff;
+}
+
+.voice-help-header small,
+.voice-help-lab small {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+}
+
+.voice-help-header h2 {
+    margin: 5px 0;
+    font-size: clamp(26px, 2.2vw, 36px);
+}
+
+.voice-help-header p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.voice-help-header > button {
+    flex: 0 0 auto;
+    border: 2px solid #fff;
+    background: transparent;
+    color: inherit;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.voice-help-sections {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding: 24px 28px 18px;
+}
+
+.voice-help-sections > article {
+    border: 2px solid #7b898d;
+    background: #fffdf8;
+    padding: 18px;
+}
+
+.voice-help-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid #d6d1c4;
+    padding-bottom: 13px;
+}
+
+.voice-help-section-title > span {
+    color: #b36d45;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.voice-help-section-title h3 {
+    margin: 0 0 3px;
+    font-size: 21px;
+}
+
+.voice-help-section-title small {
+    color: #5f795f;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.voice-help-sections ul {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.voice-help-sections li {
+    display: grid;
+    gap: 4px;
+    border-bottom: 1px solid #ddd7ca;
+    padding: 10px 4px;
+}
+
+.voice-help-sections li strong {
+    color: #a45f37;
+    font-size: 16px;
+}
+
+.voice-help-sections li span {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.voice-help-lab {
+    display: grid;
+    grid-template-columns: 240px 1fr 1fr;
+    align-items: center;
+    gap: 18px;
+    margin: 0 28px 26px;
+    border: 2px solid #647f70;
+    background: #e8f0e8;
+    padding: 16px 20px;
+}
+
+.voice-help-lab strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 18px;
+}
+
+.voice-help-lab p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+@media (max-width: 950px) {
+    .voice-help-sections,
+    .voice-help-lab {
+        grid-template-columns: 1fr;
+    }
+}
+

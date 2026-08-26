@@ -1,0 +1,496 @@
+/* =========================================================
+   SITE HEADER
+========================================================= */
+
+.site-header {
+    position: relative;
+
+    z-index: 1000;
+
+    width: 100%;
+    height: 62px;
+
+    flex: 0 0 62px;
+
+    box-sizing: border-box;
+
+    padding:
+            0
+            clamp(18px, 2vw, 32px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #202b35 0%,
+                    #172029 58%,
+                    #121920 100%
+            );
+
+    border-bottom:
+            3px solid
+            #0b1015;
+
+    box-shadow:
+            0 3px 0
+            rgba(92, 62, 40, 0.38),
+            0 6px 14px
+            rgba(0, 0, 0, 0.18);
+
+    color: #f7f4ec;
+
+    font-family:
+            Pretendard,
+            "Noto Sans KR",
+            "Malgun Gothic",
+            sans-serif;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.site-brand {
+    height: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.site-brand-logo {
+    position: relative;
+
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+            2px solid
+            #d7b45b;
+
+    background:
+            linear-gradient(
+                    145deg,
+                    #36424d 0%,
+                    #222c35 100%
+            );
+
+    color: #e9c568;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    box-shadow:
+            inset 0 0 0 1px
+            rgba(255, 255, 255, 0.06),
+            3px 3px 0
+            rgba(0, 0, 0, 0.2);
+}
+
+
+.site-brand-logo::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 3px;
+
+    border:
+            1px solid
+            rgba(232, 196, 104, 0.16);
+
+    pointer-events: none;
+}
+
+
+.site-brand-copy {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.site-brand-copy strong {
+    color: #ffffff;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size:
+            clamp(
+                    14px,
+                    1.05vw,
+                    17px
+            );
+
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+
+    white-space: nowrap;
+}
+
+
+.site-brand-copy small {
+    color: #8999a6;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 6px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.7px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RIGHT ACTION AREA
+========================================================= */
+
+.site-header-actions {
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+}
+
+
+/* =========================================================
+   COMMON BUTTON
+========================================================= */
+
+.site-header-button {
+    height: 34px;
+
+    box-sizing: border-box;
+
+    padding:
+            0
+            11px;
+
+    border:
+            1px solid
+            #485661;
+
+    border-radius: 3px;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #2c3843 0%,
+                    #222c35 100%
+            );
+
+    color: #f5f3ed;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    font-family:
+            Pretendard,
+            "Noto Sans KR",
+            sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+            inset 0 1px 0
+            rgba(255, 255, 255, 0.05),
+            2px 2px 0
+            rgba(0, 0, 0, 0.12);
+
+    transition:
+            background 120ms ease,
+            border-color 120ms ease,
+            transform 120ms ease;
+}
+
+
+.site-header-button:hover {
+    border-color: #74838e;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #394752 0%,
+                    #2a3640 100%
+            );
+
+    transform:
+            translateY(-1px);
+}
+
+
+.site-header-button:active {
+    transform:
+            translateY(1px);
+}
+
+
+/* =========================================================
+   SIGNUP
+========================================================= */
+
+.site-signup-button {
+    border-color: #816d44;
+
+    color: #e8c66e;
+}
+
+
+.site-signup-button:hover {
+    border-color: #c29f52;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #3a372e,
+                    #292a28
+            );
+}
+
+
+/* =========================================================
+   USER CARD
+========================================================= */
+
+.site-user-card {
+    height: 34px;
+
+    box-sizing: border-box;
+
+    padding:
+            0
+            8px;
+
+    border:
+            1px solid
+            #45525c;
+
+    border-radius: 3px;
+
+    background:
+            rgba(
+                    21,
+                    29,
+                    36,
+                    0.9
+            );
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    box-shadow:
+            inset 0 1px 0
+            rgba(255, 255, 255, 0.035);
+}
+
+
+.site-online-dot {
+    width: 6px;
+    height: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #83ad70;
+
+    box-shadow:
+            0 0 7px
+            rgba(
+                    131,
+                    173,
+                    112,
+                    0.72
+            );
+}
+
+
+.site-user-avatar {
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+
+    border:
+            1px solid
+            #b7a06e;
+
+    border-radius: 2px;
+
+    background:
+            linear-gradient(
+                    #f1eadc,
+                    #ddd2bb
+            );
+
+    color: #27313a;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+.site-user-card strong {
+    max-width: 110px;
+
+    overflow: hidden;
+
+    color: #f8f7f3;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.site-logout-button {
+    color: #e7e3da;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .site-header {
+        height: 56px;
+
+        flex-basis: 56px;
+
+        padding:
+                0
+                12px;
+    }
+
+
+    .site-brand-logo {
+        width: 34px;
+        height: 34px;
+
+        font-size: 14px;
+    }
+
+
+    .site-brand-copy strong {
+        font-size: 12px;
+    }
+
+
+    .site-brand-copy small {
+        display: none;
+    }
+
+
+    .site-header-button {
+        width: 34px;
+
+        padding: 0;
+    }
+
+
+    .site-header-button span {
+        display: none;
+    }
+
+
+    .site-user-card strong {
+        display: none;
+    }
+
+
+    .site-user-card {
+        padding:
+                0
+                5px;
+    }
+
+
+    .site-online-dot {
+        display: none;
+    }
+
+}

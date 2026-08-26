@@ -1,0 +1,799 @@
+/* =========================================================
+   VECTOR RAG LIVE DEMO
+========================================================= */
+
+.vector-demo {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        auto
+        minmax(0, 1fr)
+        auto;
+
+    background: #f7f4ee;
+
+    border: 2px solid #536d7d;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.vector-demo-header {
+    min-height: 60px;
+
+    box-sizing: border-box;
+
+    padding: 9px 16px;
+
+    border-bottom: 1px solid #bac5cb;
+
+    background: #e7eef2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.vector-demo-header small {
+    display: block;
+
+    color: #5b8098;
+
+    font-family: Consolas, monospace;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+}
+
+
+.vector-demo-header h2 {
+    margin: 3px 0 0;
+
+    color: #263f50;
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+
+.vector-demo-header-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.vector-demo-header-right > span {
+    padding: 5px 8px;
+
+    border: 1px solid #8da0ac;
+
+    background: #fff;
+
+    color: #506d7e;
+
+    font-family: Consolas, monospace;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+
+.vector-demo-header-right .paused {
+    border-color: #b88965;
+
+    background: #f4e8df;
+
+    color: #9b6645;
+}
+
+
+.vector-demo-header-right button {
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid #98a8b0;
+
+    background: #fff;
+
+    color: #536873;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   PIPELINE
+========================================================= */
+
+.vector-demo-pipeline {
+    min-height: 43px;
+
+    box-sizing: border-box;
+
+    padding: 6px 12px;
+
+    border-bottom: 1px solid #d1d7da;
+
+    background: #f1f3f3;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, minmax(0, 1fr));
+
+    gap: 4px;
+}
+
+
+.vector-pipeline-step {
+    min-width: 0;
+
+    padding: 5px 4px;
+
+    border-bottom: 3px solid #c7ced1;
+
+    opacity: 0.43;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.vector-pipeline-step span {
+    color: #77868e;
+
+    font-family: Consolas, monospace;
+
+    font-size: 7px;
+    font-weight: 900;
+}
+
+
+.vector-pipeline-step b {
+    overflow: hidden;
+
+    color: #536873;
+
+    font-family: Consolas, monospace;
+
+    font-size: 7px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.vector-pipeline-step.completed {
+    opacity: 0.75;
+
+    border-color: #76927a;
+}
+
+
+.vector-pipeline-step.active {
+    opacity: 1;
+
+    border-color: #4f7f9c;
+
+    background: #e5edf2;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.vector-demo-body {
+    min-height: 0;
+
+    padding: 10px 12px;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(280px, 0.8fr);
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   LEFT STAGE
+========================================================= */
+
+.vector-demo-stage {
+    min-width: 0;
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        auto
+        minmax(0, 1fr);
+
+    gap: 6px;
+}
+
+
+.vector-live-question,
+.vector-live-embedding {
+    box-sizing: border-box;
+
+    padding: 7px 11px;
+
+    border-left: 4px solid #66869a;
+
+    background: #eef2f4;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    animation:
+            vectorSlideIn
+            0.35s ease both;
+}
+
+
+.vector-live-question small,
+.vector-live-embedding > span {
+    flex-shrink: 0;
+
+    color: #648197;
+
+    font-family: Consolas, monospace;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.vector-live-question strong {
+    color: #304958;
+
+    font-size: 11px;
+}
+
+
+.vector-live-embedding strong {
+    overflow: hidden;
+
+    color: #3f708d;
+
+    font-family: Consolas, monospace;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+.vector-demo-canvas {
+    position: relative;
+
+    min-height: 0;
+
+    border: 1px solid #b9c5ca;
+
+    overflow: hidden;
+
+    background:
+            linear-gradient(
+                    rgba(86, 109, 123, 0.045) 1px,
+                    transparent 1px
+            ),
+            linear-gradient(
+                    90deg,
+                    rgba(86, 109, 123, 0.045) 1px,
+                    transparent 1px
+            ),
+            #faf9f6;
+
+    background-size: 28px 28px;
+}
+
+
+.vector-demo-canvas canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+.vector-canvas-waiting {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+
+.vector-canvas-waiting span {
+    color: #718894;
+
+    font-family: Consolas, monospace;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.vector-canvas-waiting strong {
+    margin-top: 8px;
+
+    color: #526873;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RIGHT INSPECTOR
+========================================================= */
+
+.vector-demo-inspector {
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.vector-inspector-section,
+.vector-context-panel {
+    box-sizing: border-box;
+
+    padding: 10px;
+
+    border: 1px solid #b9c4c9;
+
+    background: #fff;
+}
+
+
+.vector-inspector-section {
+    flex: 1;
+}
+
+
+.vector-inspector-section > small,
+.vector-context-panel > small {
+    color: #678397;
+
+    font-family: Consolas, monospace;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.vector-inspector-section h3,
+.vector-context-panel h3 {
+    margin: 2px 0 7px;
+
+    color: #304958;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SIMILARITY LIST
+========================================================= */
+
+.vector-similarity-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.vector-similarity-item {
+    min-height: 31px;
+
+    padding: 4px 6px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d0d6d9;
+
+    background: #f7f8f8;
+
+    display: grid;
+
+    grid-template-columns:
+        24px
+        minmax(0, 1fr)
+        38px;
+
+    align-items: center;
+
+    gap: 6px;
+
+    transition:
+            opacity 0.4s ease,
+            transform 0.4s ease,
+            background 0.4s ease,
+            border-color 0.4s ease;
+}
+
+
+.vector-similarity-item > span {
+    color: #718692;
+
+    font-family: Consolas, monospace;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+
+.vector-similarity-item > div {
+    min-width: 0;
+}
+
+
+.vector-similarity-item strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #435965;
+
+    font-size: 8px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.vector-similarity-item > b {
+    color: #52738a;
+
+    font-family: Consolas, monospace;
+
+    font-size: 8px;
+
+    text-align: right;
+}
+
+
+.similarity-bar {
+    height: 3px;
+
+    margin-top: 3px;
+
+    background: #dde2e4;
+
+    overflow: hidden;
+}
+
+
+.similarity-bar i {
+    display: block;
+
+    height: 100%;
+
+    background: #6589a0;
+
+    transition:
+            width 1.3s ease;
+}
+
+
+.vector-similarity-item.selected {
+    border-color: #789678;
+
+    background: #edf3e9;
+
+    transform: translateX(-3px);
+}
+
+
+.vector-similarity-item.selected
+.similarity-bar i {
+    background: #6d926c;
+}
+
+
+.vector-similarity-item.rejected {
+    opacity: 0.25;
+}
+
+
+/* =========================================================
+   CONTEXT
+========================================================= */
+
+.vector-context-panel {
+    animation:
+            vectorSlideIn
+            0.4s ease both;
+}
+
+
+.vector-context-document {
+    padding: 5px 0;
+
+    border-top: 1px solid #e0e3e4;
+
+    display: grid;
+
+    grid-template-columns:
+        22px
+        minmax(0, 1fr);
+
+    gap: 6px;
+}
+
+
+.vector-context-document > span {
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #6e9271;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: Consolas, monospace;
+
+    font-size: 7px;
+    font-weight: 900;
+}
+
+
+.vector-context-document strong {
+    color: #405660;
+
+    font-size: 8px;
+}
+
+
+.vector-context-document p {
+    margin: 2px 0 0;
+
+    color: #747b7e;
+
+    font-size: 7px;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   LLM FLOW
+========================================================= */
+
+.vector-llm-flow {
+    min-height: 55px;
+
+    box-sizing: border-box;
+
+    padding: 7px 14px;
+
+    border-top: 1px solid #bdc8cd;
+
+    background: #e8eef1;
+
+    display: grid;
+
+    grid-template-columns:
+        72px
+        20px
+        90px
+        25px
+        52px
+        25px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 5px;
+
+    animation:
+            vectorSlideIn
+            0.4s ease both;
+}
+
+
+.vector-llm-flow > div {
+    padding: 6px;
+
+    border: 1px solid #91a4af;
+
+    background: #fff;
+
+    color: #536c7a;
+
+    font-family: Consolas, monospace;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+.vector-llm-flow > span {
+    color: #708995;
+
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+.vector-llm-flow .llm-node {
+    border-color: #b77a5e;
+
+    background: #f2e7e1;
+
+    color: #965b42;
+
+    font-size: 10px;
+}
+
+
+.vector-llm-flow > strong {
+    color: #314a59;
+
+    font-size: 9px;
+
+    line-height: 1.3;
+}
+
+
+.vector-llm-flow .generating {
+    color: #687b86;
+
+    animation:
+            vectorPulse
+            1s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes vectorSlideIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes vectorPulse {
+
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   SMALL SCREEN HEIGHT
+========================================================= */
+
+@media (max-height: 800px) {
+
+    .vector-demo-header {
+        min-height: 50px;
+
+        padding: 6px 12px;
+    }
+
+
+    .vector-demo-header h2 {
+        font-size: 15px;
+    }
+
+
+    .vector-demo-pipeline {
+        min-height: 35px;
+
+        padding: 4px 9px;
+    }
+
+
+    .vector-demo-body {
+        padding: 7px 9px;
+
+        gap: 7px;
+    }
+
+
+    .vector-live-question,
+    .vector-live-embedding {
+        padding: 5px 8px;
+    }
+
+
+    .vector-similarity-item {
+        min-height: 26px;
+    }
+
+
+    .vector-llm-flow {
+        min-height: 46px;
+
+        padding: 5px 10px;
+    }
+}

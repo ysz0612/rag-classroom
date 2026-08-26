@@ -1,0 +1,5009 @@
+:root {
+    font-family:
+            Inter,
+            Pretendard,
+            "Noto Sans KR",
+            "Malgun Gothic",
+            Arial,
+            sans-serif;
+
+    color: #20242b;
+    background: #cfc7bc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.classroom-app {
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: grid;
+
+    /*
+     * 발표 화면 전체를
+     * Header / Classroom / Progress
+     * 세 부분으로 정확하게 나눕니다.
+     */
+    grid-template-rows:
+    58px
+    minmax(0, 1fr)
+    72px;
+
+    background: #d8cbb9;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.classroom-header {
+    position: relative;
+    z-index: 30;
+
+    min-width: 0;
+
+    padding: 0 18px;
+
+    background: #252a31;
+    color: #f8f7f3;
+
+    border-bottom: 3px solid #171a1e;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-area {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid #d7c89f;
+
+    background: #37404a;
+
+    color: #e4d6ac;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Consolas, monospace;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.brand-title {
+    font-size: 17px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.brand-subtitle {
+    margin-top: 1px;
+
+    font-family: Consolas, monospace;
+
+    color: #9ca3aa;
+
+    font-size: 8px;
+
+    letter-spacing: 1.4px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.header-button,
+.logout-button {
+    height: 34px;
+
+    border: 1px solid #454b54;
+
+    border-radius: 4px;
+
+    background: #30363f;
+    color: #f4f4f4;
+
+    padding: 0 11px;
+}
+
+.header-button {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.header-button:hover,
+.logout-button:hover {
+    background: #3a424c;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-left: 5px;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+
+    border: 2px solid #17191c;
+
+    border-radius: 4px;
+
+    background: #e6ded1;
+    color: #252525;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+}
+
+.username {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CLASSROOM
+========================================================= */
+
+.classroom-main {
+    position: relative;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    display: grid;
+
+    /*
+     * 이전보다 좌우 패널을 줄이고
+     * 중앙 컴퓨터 공간을 크게 확보합니다.
+     */
+    grid-template-columns:
+    190px
+    minmax(0, 1fr)
+    270px;
+
+    gap: 10px;
+
+    padding:
+            8px
+            10px
+            10px;
+
+    isolation: isolate;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #d9cbb8 0%,
+                    #d9cbb8 70%,
+                    #a27a5a 70%,
+                    #a27a5a 100%
+            );
+}
+
+.classroom-main > :not(
+  .classroom-background
+) {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =========================================================
+   CLASSROOM DECORATION
+========================================================= */
+
+.classroom-background {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* WINDOW */
+
+.wall-window {
+    position: absolute;
+
+    left: 50%;
+    top: -20px;
+
+    transform:
+            translateX(-50%);
+
+    width: 400px;
+    height: 180px;
+
+    border: 8px solid #8a6a52;
+
+    background: #a7cdd5;
+
+    box-shadow:
+            inset 0 0 0 4px #cbb095;
+}
+
+.window-sky {
+    position: absolute;
+
+    inset: 4px;
+
+    overflow: hidden;
+
+    background:
+            linear-gradient(
+                    #89c3df,
+                    #cde2df
+            );
+}
+
+.cloud {
+    position: absolute;
+
+    width: 78px;
+    height: 20px;
+
+    border-radius: 30px;
+
+    background:
+            rgba(
+                    255,
+                    255,
+                    255,
+                    0.75
+            );
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    background: inherit;
+
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 30px;
+    height: 30px;
+
+    left: 12px;
+    top: -13px;
+}
+
+.cloud::after {
+    width: 38px;
+    height: 38px;
+
+    right: 10px;
+    top: -20px;
+}
+
+.cloud-one {
+    left: 38px;
+    top: 38px;
+}
+
+.cloud-two {
+    right: 42px;
+    top: 82px;
+}
+
+.mountain {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 190px;
+    height: 65px;
+
+    background: #849b77;
+
+    clip-path:
+            polygon(
+                    0 100%,
+                    45% 10%,
+                    100% 100%
+            );
+}
+
+.mountain-one {
+    left: -20px;
+}
+
+.mountain-two {
+    right: -25px;
+
+    background: #718c6c;
+}
+
+.window-frame-v {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 50%;
+
+    width: 7px;
+
+    background: #8a6a52;
+}
+
+.window-frame-h {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 50%;
+
+    height: 7px;
+
+    background: #8a6a52;
+}
+
+
+/* BOARD */
+
+.class-board {
+    position: absolute;
+
+    right: 285px;
+    top: 8px;
+
+    width: 135px;
+    height: 74px;
+
+    padding: 9px;
+
+    border: 4px solid #735742;
+
+    background: #9a7d65;
+    color: #f1e3d1;
+
+    font-family: Consolas, monospace;
+
+    box-shadow:
+            4px 4px 0
+            rgba(66, 45, 32, 0.13);
+
+    transform: rotate(1deg);
+}
+
+.board-small {
+    display: block;
+
+    font-size: 8px;
+}
+
+.board-big {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.board-line {
+    height: 1px;
+
+    margin: 7px 0 5px;
+
+    background:
+            rgba(
+                    255,
+                    255,
+                    255,
+                    0.28
+            );
+}
+
+.board-code {
+    font-size: 7px;
+
+    color: #dbcab7;
+}
+
+
+/* LAMP */
+
+.hanging-lamp {
+    position: absolute;
+
+    left: 215px;
+    top: -5px;
+
+    width: 80px;
+}
+
+.lamp-wire {
+    width: 4px;
+    height: 27px;
+
+    margin: auto;
+
+    background: #38322d;
+}
+
+.lamp-shade {
+    width: 70px;
+    height: 28px;
+
+    margin: auto;
+
+    background: #414642;
+
+    clip-path:
+            polygon(
+                    30% 0,
+                    70% 0,
+                    100% 100%,
+                    0 100%
+            );
+}
+
+.lamp-light {
+    width: 37px;
+    height: 7px;
+
+    margin: -1px auto;
+
+    background: #edbd64;
+
+    box-shadow:
+            0 9px 20px
+            rgba(
+                    237,
+                    189,
+                    100,
+                    0.35
+            );
+}
+
+
+/* DESK */
+
+.desk-surface {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 62px;
+
+    border-top: 6px solid #60442f;
+
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    #79573f 0,
+                    #79573f 105px,
+                    #835f45 105px,
+                    #835f45 109px
+            );
+}
+
+
+/* =========================================================
+   PLANT
+========================================================= */
+
+.left-plant {
+    position: absolute;
+
+    left: 205px;
+    bottom: 57px;
+
+    width: 62px;
+    height: 80px;
+}
+
+.plant-pot-css {
+    position: absolute;
+
+    bottom: 0;
+    left: 18px;
+
+    width: 30px;
+    height: 29px;
+
+    border: 3px solid #523d30;
+
+    background: #936b4d;
+
+    clip-path:
+            polygon(
+                    8% 0,
+                    92% 0,
+                    80% 100%,
+                    20% 100%
+            );
+}
+
+.plant-leaf {
+    position: absolute;
+
+    width: 15px;
+    height: 39px;
+
+    border-radius:
+            100% 0
+            100% 0;
+
+    background: #6f8e67;
+
+    transform-origin:
+            bottom center;
+}
+
+.leaf-1 {
+    left: 25px;
+    top: 13px;
+
+    transform:
+            rotate(-25deg);
+}
+
+.leaf-2 {
+    left: 33px;
+    top: 5px;
+
+    transform:
+            rotate(15deg);
+}
+
+.leaf-3 {
+    left: 16px;
+    top: 20px;
+
+    transform:
+            rotate(-55deg);
+}
+
+.leaf-4 {
+    left: 40px;
+    top: 20px;
+
+    transform:
+            rotate(50deg);
+}
+
+
+/* =========================================================
+   BOOKS
+========================================================= */
+
+.desk-books {
+    position: absolute;
+
+    right: 292px;
+    bottom: 55px;
+
+    width: 85px;
+    height: 40px;
+}
+
+.desk-book {
+    position: absolute;
+
+    right: 0;
+
+    height: 9px;
+
+    border:
+            2px solid #4c4138;
+}
+
+.book-green {
+    width: 65px;
+    bottom: 0;
+
+    background: #728673;
+}
+
+.book-red {
+    width: 55px;
+    bottom: 10px;
+
+    background: #a87061;
+}
+
+.book-blue {
+    width: 70px;
+    bottom: 20px;
+
+    background: #667985;
+}
+
+
+/* =========================================================
+   COFFEE
+========================================================= */
+
+.coffee-cup {
+    position: absolute;
+
+    right: 385px;
+    bottom: 57px;
+
+    width: 50px;
+    height: 55px;
+}
+
+.cup-body {
+    position: absolute;
+
+    left: 5px;
+    bottom: 0;
+
+    width: 32px;
+    height: 30px;
+
+    border: 3px solid #50463e;
+
+    background: #e2d6c4;
+}
+
+.cup-handle {
+    position: absolute;
+
+    right: 3px;
+    bottom: 8px;
+
+    width: 17px;
+    height: 17px;
+
+    border:
+            4px solid #50463e;
+
+    border-left: none;
+
+    border-radius:
+            0 50% 50% 0;
+}
+
+.coffee-steam {
+    position: absolute;
+
+    width: 2px;
+    height: 18px;
+
+    background:
+            rgba(
+                    255,
+                    255,
+                    255,
+                    0.6
+            );
+
+    animation:
+            steamMove
+            2s ease-in-out
+            infinite;
+}
+
+.steam-one {
+    left: 16px;
+    top: 0;
+}
+
+.steam-two {
+    left: 27px;
+    top: 5px;
+
+    animation-delay:
+            0.7s;
+}
+
+@keyframes steamMove {
+    0% {
+        transform:
+                translateY(3px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+                translateY(-7px);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   CAT
+========================================================= */
+
+.pixel-cat {
+    position: absolute;
+
+    left: 50%;
+    bottom: 53px;
+
+    transform:
+            translateX(-50%);
+
+    width: 105px;
+    height: 50px;
+}
+
+.cat-body {
+    position: absolute;
+
+    left: 22px;
+    bottom: 0;
+
+    width: 70px;
+    height: 30px;
+
+    border: 3px solid #4b4037;
+
+    border-radius:
+            22px 25px 12px 12px;
+
+    background: #9a8776;
+}
+
+.cat-head {
+    position: absolute;
+
+    left: -16px;
+    bottom: 2px;
+
+    width: 35px;
+    height: 32px;
+
+    border: 3px solid #4b4037;
+
+    border-radius: 10px;
+
+    background: #9a8776;
+}
+
+.cat-ear {
+    position: absolute;
+
+    top: -11px;
+
+    width: 13px;
+    height: 13px;
+
+    background: #9a8776;
+
+    border-top:
+            3px solid #4b4037;
+
+    transform: rotate(45deg);
+}
+
+.left-ear {
+    left: 2px;
+}
+
+.right-ear {
+    right: 2px;
+}
+
+.cat-face {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2px;
+
+    color: #3f3731;
+
+    font-size: 8px;
+}
+
+.cat-tail {
+    position: absolute;
+
+    right: 0;
+    bottom: 8px;
+
+    width: 42px;
+    height: 12px;
+
+    border:
+            5px solid #4b4037;
+
+    border-left: none;
+
+    border-bottom: none;
+
+    border-radius:
+            0 18px 0 0;
+
+    transform-origin:
+            left center;
+
+    animation:
+            catTail 2.2s
+            ease-in-out
+            infinite;
+}
+
+@keyframes catTail {
+    0%,
+    100% {
+        transform:
+                rotate(-5deg);
+    }
+
+    50% {
+        transform:
+                rotate(12deg);
+    }
+}
+
+
+/* =========================================================
+   LEFT LESSON PANEL
+========================================================= */
+
+.lesson-sidebar {
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    padding: 8px;
+
+    border: 2px solid #171a1e;
+
+    border-radius: 6px;
+
+    background: #292f37;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow:
+            4px 4px 0
+            rgba(45, 35, 28, 0.13);
+}
+
+.sidebar-title {
+    height: 38px;
+
+    padding: 0 7px;
+
+    color: #f5f5f5;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.lesson-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.lesson-item {
+    width: 100%;
+
+    min-height: 60px;
+
+    padding: 7px;
+
+    border:
+            1px solid #474e58;
+
+    border-radius: 5px;
+
+    background: #333a44;
+    color: #f4f4f4;
+
+    display: grid;
+
+    grid-template-columns:
+    31px
+    1fr
+    18px;
+
+    align-items: center;
+
+    text-align: left;
+}
+
+.lesson-item:hover {
+    background: #3a424d;
+}
+
+.lesson-item.active {
+    border-color: #8396aa;
+
+    background: #465a73;
+
+    box-shadow:
+            inset 3px 0 0 #dfbd63;
+}
+
+.lesson-icon {
+    font-size: 18px;
+}
+
+.lesson-name {
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.lesson-count {
+    margin-top: 3px;
+
+    color: #aeb6c0;
+
+    font-size: 9px;
+}
+
+.lesson-status {
+    width: 17px;
+    height: 17px;
+
+    border:
+            2px solid #8e969f;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+}
+
+.lesson-status.done {
+    border-color: #7e9f76;
+
+    background: #7e9f76;
+}
+
+.lesson-tip {
+    margin-top: auto;
+
+    padding: 9px;
+
+    border:
+            1px solid #434a53;
+
+    border-radius: 4px;
+
+    background: #20252c;
+
+    color: #c8cdd3;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.lesson-tip p {
+    margin:
+            4px 0 0;
+}
+
+.tip-label {
+    color: #9ac77e;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   COMPUTER ZONE
+========================================================= */
+
+.computer-zone {
+    min-width: 0;
+    min-height: 0;
+
+    /*
+     * 중앙 영역을 거의 전부
+     * 컴퓨터가 차지하게 합니다.
+     */
+    padding:
+            24px
+            0
+            32px;
+
+    display: flex;
+
+    align-items: stretch;
+    justify-content: center;
+}
+
+.computer-shell {
+    position: relative;
+
+    width: min(
+            100%,
+            1120px
+    );
+
+    min-width: 0;
+    min-height: 0;
+
+    padding:
+            9px
+            13px
+            11px;
+
+    border:
+            3px solid #5a595c;
+
+    border-radius: 13px;
+
+    background: #ddd4c8;
+
+    box-shadow:
+            inset
+            0 0 0 4px
+            #eee6da,
+            0 6px 0
+            #79736b,
+            0 12px 18px
+            rgba(
+                    48,
+                    37,
+                    28,
+                    0.16
+            );
+
+    display: grid;
+
+    grid-template-rows:
+    25px
+    minmax(0, 1fr)
+    43px;
+}
+
+.computer-shell::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -29px;
+
+    transform:
+            translateX(-50%);
+
+    width: 190px;
+    height: 28px;
+
+    border:
+            3px solid #59575a;
+
+    border-top: none;
+
+    border-radius:
+            0 0 6px 6px;
+
+    background: #bbb4aa;
+}
+
+.computer-top {
+    padding:
+            0 4px;
+
+    color: #706b64;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+}
+
+.computer-status {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #8d8177;
+}
+
+.status-dot.on {
+    background: #71966e;
+
+    box-shadow:
+            0 0 5px
+            rgba(
+                    113,
+                    150,
+                    110,
+                    0.65
+            );
+}
+
+
+/* =========================================================
+   MONITOR
+========================================================= */
+
+.monitor {
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    border:
+            8px solid #292d34;
+
+    border-radius: 10px;
+
+    background: #f8f5ef;
+
+    box-shadow:
+            inset
+            0 0 0 2px
+            #15171a;
+}
+
+.monitor-off {
+    background:
+            radial-gradient(
+                    circle at center,
+                    #17191b 0%,
+                    #0d0f10 55%,
+                    #050606 100%
+            );
+}
+
+.power-off-screen {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #eeeeee;
+
+    text-align: center;
+}
+
+.power-icon {
+    color: #7ba173;
+
+    font-size:
+            clamp(
+                    44px,
+                    4vw,
+                    65px
+            );
+
+    line-height: 1;
+
+    text-shadow:
+            0 0 15px
+            rgba(
+                    123,
+                    161,
+                    115,
+                    0.22
+            );
+}
+
+.power-title {
+    margin-top: 10px;
+
+    color: #9fc88e;
+
+    font-size:
+            clamp(
+                    17px,
+                    1.6vw,
+                    24px
+            );
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.power-divider {
+    width: 42px;
+    height: 1px;
+
+    margin: 17px 0;
+
+    background: #33383b;
+}
+
+.power-off-screen p {
+    margin:
+            0 0 5px;
+
+    color: #c7c7c7;
+
+    font-size: 11px;
+}
+
+.power-off-screen strong {
+    font-size: 14px;
+}
+
+.power-off-screen span {
+    margin-top: 5px;
+
+    color: #9d9d9d;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   COMPUTER CONTROLS
+========================================================= */
+
+.computer-controls {
+    min-width: 0;
+
+    padding-top: 7px;
+
+    display: grid;
+
+    grid-template-columns:
+    115px
+    1fr
+    115px;
+
+    gap: 10px;
+}
+
+.pixel-control,
+.page-counter {
+    border:
+            2px solid #17191d;
+
+    border-radius: 4px;
+
+    background: #343b46;
+    color: #ffffff;
+
+    box-shadow:
+            inset
+            0 0 0 1px
+            #515a66;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+}
+
+.pixel-control:hover:not(
+  :disabled
+) {
+    background: #414a56;
+}
+
+.pixel-control:disabled {
+    opacity: 0.35;
+
+    cursor: default;
+}
+
+.page-counter {
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 0.6px;
+}
+
+
+/* =========================================================
+   LESSON SCREEN
+========================================================= */
+
+.lesson-screen {
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #f8f5ef;
+}
+
+.lesson-screen-header {
+    height: 43px;
+
+    flex-shrink: 0;
+
+    padding:
+            0 17px;
+
+    background: #40536d;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.lesson-content {
+    min-height: 0;
+
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+    155px
+    1fr;
+}
+
+.lesson-step-list {
+    min-height: 0;
+
+    padding:
+            17px 9px;
+
+    border-right:
+            1px solid #d9d1c6;
+
+    background: #f0ece5;
+}
+
+.lesson-step {
+    margin-bottom: 5px;
+
+    padding: 9px 7px;
+
+    border-radius: 4px;
+
+    color: #858585;
+
+    font-size: 9px;
+}
+
+.lesson-step.selected {
+    background: #414b5b;
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.lesson-main-content {
+    min-width: 0;
+    min-height: 0;
+
+    overflow: auto;
+
+    padding:
+            clamp(
+                    20px,
+                    3vh,
+                    32px
+            )
+            clamp(
+                    22px,
+                    3vw,
+                    42px
+            );
+}
+
+.content-eyebrow {
+    margin: 0;
+
+    color: #6b7682;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.lesson-main-content h1 {
+    margin:
+            6px 0
+            10px;
+
+    color: #252c35;
+
+    font-size:
+            clamp(
+                    23px,
+                    2vw,
+                    31px
+            );
+}
+
+.lesson-description {
+    max-width: 630px;
+
+    margin: 0;
+
+    color: #343a42;
+
+    font-size:
+            clamp(
+                    12px,
+                    1vw,
+                    16px
+            );
+
+    line-height: 1.65;
+}
+
+.vector-flow {
+    margin-top:
+            clamp(
+                    22px,
+                    4vh,
+                    42px
+            );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap:
+            clamp(
+                    10px,
+                    2vw,
+                    25px
+            );
+}
+
+.flow-block {
+    width: 120px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    text-align: center;
+}
+
+.flow-block .anticon {
+    color: #587b86;
+
+    font-size: 29px;
+}
+
+.flow-block strong {
+    font-size: 11px;
+}
+
+.flow-block span {
+    color: #777777;
+
+    font-size: 8px;
+}
+
+.flow-arrow {
+    color: #596068;
+
+    font-size: 20px;
+}
+
+.vector-number {
+    padding:
+            10px 11px;
+
+    border:
+            1px solid #ccc5ba;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #303740;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 9px;
+}
+
+.lesson-note {
+    margin-top:
+            clamp(
+                    20px,
+                    4vh,
+                    40px
+            );
+
+    padding:
+            11px 14px;
+
+    border:
+            1px solid #d8cdbb;
+
+    border-radius: 5px;
+
+    background: #eee6d9;
+
+    color: #484139;
+
+    font-size: 10px;
+}
+
+
+/* GENERIC */
+
+.generic-lesson {
+    min-height: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.generic-badge {
+    color: #777;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+.generic-lesson h1 {
+    margin:
+            8px 0;
+
+    color: #252b33;
+
+    font-size:
+            clamp(
+                    27px,
+                    3vw,
+                    42px
+            );
+}
+
+.generic-lesson p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   AI SIDEBAR
+========================================================= */
+
+.ai-sidebar {
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    border:
+            2px solid #5d5953;
+
+    border-radius: 6px;
+
+    background: #f7f4ed;
+
+    box-shadow:
+            4px 4px 0
+            rgba(
+                    45,
+                    35,
+                    27,
+                    0.13
+            );
+
+    display: grid;
+
+    grid-template-rows:
+    42px
+    38px
+    minmax(0, 1fr)
+    48px
+    145px;
+}
+
+.ai-sidebar.collapsed {
+    width: 45px;
+    height: 45px;
+
+    min-height: 45px;
+
+    justify-self: end;
+
+    display: block;
+
+    border: none;
+
+    background: transparent;
+
+    box-shadow: none;
+}
+
+.chat-open-button {
+    width: 43px;
+    height: 43px;
+
+    border:
+            2px solid #30343a;
+
+    border-radius: 5px;
+
+    background: #303640;
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+.chat-header {
+    padding:
+            0 11px;
+
+    background: #303640;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.chat-title {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.ai-online-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #8fc281;
+
+    box-shadow:
+            0 0 5px
+            rgba(
+                    143,
+                    194,
+                    129,
+                    0.55
+            );
+}
+
+.collapse-button {
+    border: none;
+
+    background: transparent;
+    color: white;
+
+    font-size: 16px;
+}
+
+.chat-history-title {
+    padding:
+            0 10px;
+
+    border-bottom:
+            1px dashed #cbc4b9;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #4d4d4d;
+
+    font-size: 9px;
+}
+
+.chat-history-title button {
+    padding:
+            3px 6px;
+
+    border:
+            1px solid #c5beb3;
+
+    border-radius: 3px;
+
+    background: #ffffff;
+    color: #555;
+
+    font-size: 8px;
+}
+
+.chat-body {
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 9px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.chat-message {
+    max-width: 88%;
+
+    padding:
+            8px 9px;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+
+    line-height: 1.55;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+
+    border:
+            1px solid #c9d8d1;
+
+    background: #dce8e3;
+    color: #34443e;
+}
+
+.chat-message.assistant {
+    align-self: flex-start;
+
+    border:
+            1px solid #ded4c7;
+
+    background: #ebe4d9;
+    color: #403a34;
+}
+
+.message-label {
+    margin-bottom: 3px;
+
+    color: #728875;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+.chat-input-area {
+    min-width: 0;
+
+    padding: 7px;
+
+    border-top:
+            1px solid #d4cdc2;
+
+    background: #f2eee7;
+
+    display: grid;
+
+    grid-template-columns:
+    minmax(0, 1fr)
+    36px;
+
+    gap: 5px;
+}
+
+.chat-input-area input {
+    min-width: 0;
+
+    border:
+            1px solid #c4bdb2;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    padding:
+            0 9px;
+
+    background: #ffffff;
+
+    font-size: 9px;
+}
+
+.voice-button {
+    border: none;
+
+    border-radius: 5px;
+
+    background: #789b89;
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CHARACTER SLOT
+========================================================= */
+
+.character-stage {
+    position: relative;
+
+    overflow: hidden;
+
+    border-top:
+            4px solid #6d5948;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #c9b7a2,
+                    #a98f77
+            );
+}
+
+.character-stage::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 22px;
+
+    background: #8c694e;
+
+    border-top:
+            3px solid #684b38;
+}
+
+.speech-bubble {
+    position: absolute;
+
+    right: 88px;
+    top: 14px;
+
+    width: 100px;
+
+    padding: 7px;
+
+    border:
+            2px solid #4e4942;
+
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    color: #3d3a36;
+
+    text-align: center;
+
+    font-size: 8px;
+
+    line-height: 1.35;
+}
+
+.speech-bubble::after {
+    content: "";
+
+    position: absolute;
+
+    right: -7px;
+    bottom: 12px;
+
+    width: 10px;
+    height: 10px;
+
+    border-right:
+            2px solid #4e4942;
+
+    border-bottom:
+            2px solid #4e4942;
+
+    background: white;
+
+    transform:
+            rotate(-45deg);
+}
+
+
+/*
+ * 임시 캐릭터.
+ * 직접 그린 이미지가 준비되면
+ * 삭제하면 됩니다.
+ */
+
+.character-placeholder {
+    position: absolute;
+
+    right: 13px;
+    bottom: 16px;
+
+    width: 70px;
+    height: 94px;
+
+    border:
+            3px solid #303637;
+
+    border-radius:
+            25px 25px 12px 12px;
+
+    background: #e6ece6;
+
+    box-shadow:
+            4px 4px 0
+            rgba(
+                    66,
+                    55,
+                    47,
+                    0.45
+            );
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-screen {
+    width: 49px;
+    height: 40px;
+
+    border-radius: 11px;
+
+    background: #273436;
+    color: #94c98d;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    font-size: 9px;
+}
+
+.placeholder-label {
+    margin-top: 6px;
+
+    color: #607466;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 6px;
+
+    font-weight: 800;
+}
+
+
+/*
+ * 실제 그림을 넣을 때
+ * 이 클래스를 그대로 사용합니다.
+ */
+
+.assistant-character {
+    position: absolute;
+
+    right: 5px;
+    bottom: 17px;
+
+    width: 125px;
+    height: 120px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+
+/* =========================================================
+   PROGRESS FOOTER
+========================================================= */
+
+.progress-footer {
+    position: relative;
+
+    z-index: 30;
+
+    min-width: 0;
+
+    padding:
+            9px 13px;
+
+    border-top:
+            3px solid #17191d;
+
+    background: #272d35;
+    color: #ffffff;
+}
+
+.progress-main-row {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+    67px
+    minmax(130px, 0.7fr)
+    35px
+    minmax(0, 2fr);
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.progress-title {
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.progress-bar {
+    height: 13px;
+
+    overflow: hidden;
+
+    border:
+            2px solid #0d0f11;
+
+    background: #15181c;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    #7da576 0,
+                    #7da576 19px,
+                    #668b61 19px,
+                    #668b61 22px
+            );
+
+    transition:
+            width 0.25s;
+}
+
+.progress-percent {
+    font-size: 10px;
+}
+
+.module-progress {
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+    gap: 5px;
+}
+
+.mini-progress {
+    min-width: 0;
+
+    height: 37px;
+
+    padding:
+            5px 6px;
+
+    border:
+            1px solid #434a53;
+
+    border-radius: 3px;
+
+    background: #333a44;
+
+    display: grid;
+
+    grid-template-columns:
+    minmax(0, 1fr)
+    38px
+    23px;
+
+    align-items: center;
+
+    gap: 4px;
+
+    font-size: 7px;
+}
+
+.mini-progress > span {
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow:
+            ellipsis;
+}
+
+.mini-bar {
+    height: 5px;
+
+    overflow: hidden;
+
+    background: #171a1e;
+}
+
+.mini-bar > div {
+    height: 100%;
+
+    background: #d5b75f;
+}
+
+.mini-progress small {
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.chat-body::-webkit-scrollbar,
+.lesson-main-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-track,
+.lesson-main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-body::-webkit-scrollbar-thumb,
+.lesson-main-content::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+
+    background: #aaa094;
+}
+
+
+/* =========================================================
+   1366-ish LAPTOP
+========================================================= */
+
+@media (
+max-width: 1400px
+) {
+    .classroom-main {
+        grid-template-columns:
+      175px
+      minmax(0, 1fr)
+      245px;
+
+        gap: 7px;
+
+        padding:
+                7px;
+    }
+
+    .lesson-sidebar {
+        padding: 6px;
+    }
+
+    .lesson-item {
+        min-height: 55px;
+    }
+
+    .lesson-name {
+        font-size: 10px;
+    }
+
+    .computer-zone {
+        padding-top: 20px;
+    }
+
+    .computer-controls {
+        grid-template-columns:
+      95px
+      1fr
+      95px;
+    }
+
+    .class-board {
+        right: 255px;
+    }
+
+    .coffee-cup {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   LOW HEIGHT PRESENTATION SCREEN
+========================================================= */
+
+@media (
+max-height: 800px
+) {
+    .classroom-app {
+        grid-template-rows:
+      50px
+      minmax(0, 1fr)
+      60px;
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+    .computer-zone {
+        padding:
+                12px
+                0
+                25px;
+    }
+
+    .computer-shell {
+        grid-template-rows:
+      21px
+      minmax(0, 1fr)
+      37px;
+    }
+
+    .lesson-item {
+        min-height: 49px;
+    }
+
+    .lesson-tip {
+        padding: 6px;
+    }
+
+    .ai-sidebar {
+        grid-template-rows:
+      36px
+      32px
+      minmax(0, 1fr)
+      42px
+      115px;
+    }
+
+    .character-placeholder {
+        width: 58px;
+        height: 78px;
+    }
+
+    .placeholder-screen {
+        width: 41px;
+        height: 34px;
+    }
+
+    .speech-bubble {
+        right: 75px;
+
+        width: 85px;
+    }
+
+    .wall-window {
+        height: 145px;
+    }
+
+    .pixel-cat {
+        transform:
+                translateX(-50%)
+                scale(0.8);
+
+        transform-origin:
+                bottom center;
+    }
+}
+
+/* =========================================================
+   LLM PRESENTATION SLIDES
+========================================================= */
+
+.llm-screen {
+    background: #f8f5ef;
+}
+
+
+/* =========================================================
+   BASIC SLIDE
+========================================================= */
+
+.llm-slide {
+    position: relative;
+
+    width: 100%;
+    height: calc(100% - 43px);
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    padding:
+            clamp(18px, 2.5vh, 30px)
+            clamp(22px, 3vw, 46px);
+
+    color: #242a31;
+}
+
+
+.llm-slide-top {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+}
+
+
+.llm-section-number {
+    color: #536c88;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size:
+            clamp(
+                    22px,
+                    2.2vw,
+                    34px
+            );
+
+    font-weight: 900;
+
+    line-height: 1.05;
+}
+
+
+.llm-small-title {
+    margin-bottom: 3px;
+
+    color: #8b8f94;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+
+.llm-slide h1 {
+    margin: 0;
+
+    color: #20262e;
+
+    font-size:
+            clamp(
+                    22px,
+                    2.3vw,
+                    34px
+            );
+
+    line-height: 1.1;
+}
+
+
+.llm-slide h1 span {
+    margin-left: 5px;
+
+    color: #69717b;
+
+    font-size: 0.55em;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PAGE 1
+========================================================= */
+
+.llm-intro-slide {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.llm-definition {
+    margin-top:
+            clamp(
+                    16px,
+                    2.6vh,
+                    28px
+            );
+
+    padding-left: 47px;
+}
+
+
+.llm-definition strong {
+    display: block;
+
+    color: #304158;
+
+    font-size:
+            clamp(
+                    15px,
+                    1.35vw,
+                    20px
+            );
+
+    font-weight: 800;
+}
+
+
+.llm-definition p {
+    margin:
+            7px
+            0
+            0;
+
+    color: #61676e;
+
+    font-size:
+            clamp(
+                    9px,
+                    0.9vw,
+                    13px
+            );
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   PREDICTION FLOW
+========================================================= */
+
+.llm-prediction-area {
+    flex: 1;
+
+    min-height: 0;
+
+    margin-top:
+            clamp(
+                    18px,
+                    3vh,
+                    30px
+            );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap:
+            clamp(
+                    10px,
+                    1.5vw,
+                    23px
+            );
+}
+
+
+.llm-input-card,
+.llm-output-card {
+    width:
+            clamp(
+                    145px,
+                    18vw,
+                    220px
+            );
+
+    min-height: 125px;
+
+    padding: 14px;
+
+    border:
+            1px solid
+            #d4cec3;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    box-shadow:
+            0 5px 12px
+            rgba(
+                    59,
+                    49,
+                    38,
+                    0.07
+            );
+}
+
+
+.llm-input-card {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.llm-input-card .anticon {
+    margin-bottom: 9px;
+
+    color: #5a718e;
+
+    font-size: 26px;
+}
+
+
+.llm-input-card strong {
+    font-size:
+            clamp(
+                    10px,
+                    1vw,
+                    14px
+            );
+}
+
+
+.llm-input-card span {
+    margin-top: 6px;
+
+    color: #909399;
+
+    font-size: 8px;
+}
+
+
+.llm-card-label {
+    align-self: flex-start;
+
+    margin-bottom: 5px;
+
+    color: #979ba1;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+.llm-flow-arrow {
+    color: #747b84;
+
+    font-size:
+            clamp(
+                    18px,
+                    2vw,
+                    28px
+            );
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LLM BOX
+========================================================= */
+
+.llm-model-box {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.llm-model-grid {
+    width:
+            clamp(
+                    96px,
+                    10vw,
+                    130px
+            );
+
+    aspect-ratio: 1;
+
+    padding: 13px;
+
+    border:
+            3px solid
+            #354458;
+
+    border-radius: 10px;
+
+    background:
+            linear-gradient(
+                    145deg,
+                    #4e647e,
+                    #35475c
+            );
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 5px;
+
+    box-shadow:
+            4px 5px 0
+            rgba(
+                    48,
+                    57,
+                    68,
+                    0.17
+            );
+}
+
+
+.llm-model-grid span {
+    border-radius: 3px;
+
+    background:
+            rgba(
+                    255,
+                    255,
+                    255,
+                    0.17
+            );
+}
+
+
+.llm-model-grid strong {
+    border-radius: 4px;
+
+    background: #e5d8ae;
+
+    color: #263242;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size:
+            clamp(
+                    12px,
+                    1.2vw,
+                    17px
+            );
+}
+
+
+.llm-model-box small {
+    color: #767d85;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   PREDICTIONS
+========================================================= */
+
+.llm-output-card {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.prediction-options {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+.prediction-row {
+    display: grid;
+
+    grid-template-columns:
+        42px
+        minmax(
+            55px,
+            1fr
+        )
+        28px;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #73787e;
+
+    font-size: 8px;
+}
+
+
+.prediction-row > div {
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #e7e4df;
+}
+
+
+.prediction-row i {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #a6afb9;
+}
+
+
+.prediction-row.best {
+    color: #33495f;
+
+    font-weight: 800;
+}
+
+
+.prediction-row.best i {
+    background: #597999;
+}
+
+
+.prediction-row strong {
+    font-size: 7px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   KEY MESSAGE
+========================================================= */
+
+.llm-key-message {
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 14px;
+
+    padding:
+            10px
+            14px;
+
+    border:
+            1px solid
+            #d6cbb7;
+
+    border-radius: 6px;
+
+    background: #eee6d8;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.llm-key-icon {
+    color: #b2863f;
+
+    font-size: 19px;
+}
+
+
+.llm-key-message div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.llm-key-message small {
+    color: #9c7942;
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+
+.llm-key-message strong {
+    color: #49443e;
+
+    font-size:
+            clamp(
+                    8px,
+                    0.8vw,
+                    11px
+            );
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   PAGE 2 - LIMIT
+========================================================= */
+
+.llm-limit-slide {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.limit-layout {
+    flex: 1;
+
+    min-height: 0;
+
+    margin-top:
+            clamp(
+                    17px,
+                    2.7vh,
+                    30px
+            );
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(
+            150px,
+            0.8fr
+        )
+        minmax(
+            300px,
+            1.8fr
+        );
+
+    gap:
+            clamp(
+                    20px,
+                    3vw,
+                    48px
+            );
+}
+
+
+/* LEFT */
+
+.limit-model-side {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.limit-model {
+    width:
+            clamp(
+                    140px,
+                    16vw,
+                    190px
+            );
+
+    padding:
+            17px
+            12px;
+
+    border:
+            2px solid
+            #4d5a68;
+
+    border-radius: 9px;
+
+    background: #e9e4db;
+
+    text-align: center;
+}
+
+
+.limit-model-head {
+    color: #34495e;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 11px;
+
+    font-weight: 900;
+}
+
+
+.limit-brain {
+    width: 76px;
+    height: 76px;
+
+    margin:
+            15px
+            auto;
+
+    border:
+            4px solid
+            #53687d;
+
+    border-radius:
+            48%
+            52%
+            45%
+            55%;
+
+    background:
+            repeating-linear-gradient(
+                    45deg,
+                    #667c92,
+                    #667c92 7px,
+                    #71899f 7px,
+                    #71899f 14px
+            );
+
+    color: #f5e5b5;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 31px;
+
+    font-weight: 900;
+
+    box-shadow:
+            inset
+            0 0 0
+            5px
+            rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+            );
+}
+
+
+.limit-model p {
+    margin: 0;
+
+    color: #6d6f72;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+
+/* RIGHT */
+
+.limit-problems {
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    align-content: center;
+
+    gap:
+            clamp(
+                    8px,
+                    1.5vh,
+                    14px
+            );
+}
+
+
+.limit-card {
+    min-height: 78px;
+
+    padding:
+            11px
+            12px;
+
+    border:
+            1px solid
+            #d2ccc2;
+
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    display: grid;
+
+    grid-template-columns:
+        33px
+        1fr;
+
+    gap: 8px;
+
+    align-items: center;
+}
+
+
+.limit-number {
+    width: 29px;
+    height: 29px;
+
+    border-radius: 5px;
+
+    background: #546b83;
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+.limit-card > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.limit-card strong {
+    color: #313942;
+
+    font-size:
+            clamp(
+                    9px,
+                    0.9vw,
+                    12px
+            );
+}
+
+
+.limit-card span {
+    color: #74787d;
+
+    font-size:
+            clamp(
+                    7px,
+                    0.7vw,
+                    9px
+            );
+
+    line-height: 1.45;
+}
+
+
+.limit-card.danger {
+    border-color: #d6b9b2;
+
+    background: #fbf3f0;
+}
+
+
+.limit-card.danger .limit-number {
+    background: #a36e64;
+}
+
+
+/* =========================================================
+   RAG PREVIEW
+========================================================= */
+
+.rag-preview {
+    margin-top: 12px;
+
+    padding:
+            9px
+            14px;
+
+    border-top:
+            1px solid
+            #ddd4c7;
+
+    text-align: center;
+}
+
+
+.rag-preview-question {
+    color: #949494;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+.rag-preview > strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #38495b;
+
+    font-size:
+            clamp(
+                    9px,
+                    0.95vw,
+                    13px
+            );
+}
+
+
+.rag-preview-flow {
+    margin-top: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap:
+            clamp(
+                    6px,
+                    1vw,
+                    13px
+            );
+}
+
+
+.rag-preview-flow span {
+    padding:
+            5px
+            9px;
+
+    border:
+            1px solid
+            #d2ccc2;
+
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    color: #4f545b;
+
+    font-size: 8px;
+}
+
+
+.rag-preview-flow span.highlight {
+    border-color: #758aa1;
+
+    background: #536b85;
+
+    color: #ffffff;
+
+    font-weight: 800;
+}
+
+
+.rag-preview-flow b {
+    color: #969696;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   SMALL SCREEN
+========================================================= */
+
+@media (
+max-height: 760px
+) {
+
+    .llm-slide {
+        padding:
+                13px
+                24px;
+    }
+
+
+    .llm-definition {
+        margin-top: 10px;
+    }
+
+
+    .llm-prediction-area {
+        margin-top: 10px;
+    }
+
+
+    .llm-input-card,
+    .llm-output-card {
+        min-height: 105px;
+    }
+
+
+    .llm-key-message {
+        min-height: 44px;
+
+        margin-top: 7px;
+    }
+
+
+    .limit-layout {
+        margin-top: 10px;
+    }
+
+
+    .limit-card {
+        min-height: 62px;
+    }
+
+
+    .limit-brain {
+        width: 60px;
+        height: 60px;
+
+        margin:
+                8px
+                auto;
+
+        font-size: 24px;
+    }
+
+
+    .rag-preview {
+        margin-top: 5px;
+    }
+
+}
+/* =========================================================
+   LLM SIZE BOOST
+   중앙 모니터 안 설명 요소 확대
+========================================================= */
+
+
+/* 전체 슬라이드 여백 축소 */
+.llm-slide {
+    padding:
+            clamp(12px, 1.7vh, 20px)
+            clamp(18px, 2vw, 28px);
+}
+
+
+/* 제목도 약간 확대 */
+.llm-slide h1 {
+    font-size:
+            clamp(
+                    30px,
+                    2.7vw,
+                    42px
+            );
+}
+
+.llm-section-number {
+    font-size:
+            clamp(
+                    28px,
+                    2.5vw,
+                    40px
+            );
+}
+
+.llm-small-title {
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   PAGE 1
+========================================================= */
+
+.llm-definition {
+    margin-top: 15px;
+    padding-left: 42px;
+}
+
+.llm-definition strong {
+    font-size:
+            clamp(
+                    18px,
+                    1.55vw,
+                    24px
+            );
+}
+
+.llm-definition p {
+    font-size:
+            clamp(
+                    11px,
+                    0.95vw,
+                    14px
+            );
+}
+
+
+/* 설명 도형 영역을 크게 */
+.llm-prediction-area {
+    margin-top: 12px;
+
+    gap:
+            clamp(
+                    18px,
+                    2vw,
+                    32px
+            );
+
+    transform: scale(1.12);
+    transform-origin: center center;
+}
+
+
+/* 입력 / 결과 카드 확대 */
+.llm-input-card,
+.llm-output-card {
+    width:
+            clamp(
+                    200px,
+                    20vw,
+                    270px
+            );
+
+    min-height: 160px;
+
+    padding: 18px;
+}
+
+
+/* 아이콘 */
+.llm-input-card .anticon {
+    font-size: 36px;
+}
+
+
+/* 입력 문장 */
+.llm-input-card strong {
+    font-size:
+            clamp(
+                    14px,
+                    1.15vw,
+                    18px
+            );
+}
+
+.llm-input-card span {
+    font-size: 10px;
+}
+
+
+/* INPUT / PREDICTION 글자 */
+.llm-card-label {
+    font-size: 9px;
+}
+
+
+/* LLM 중앙 박스 확대 */
+.llm-model-grid {
+    width:
+            clamp(
+                    135px,
+                    12vw,
+                    170px
+            );
+
+    padding: 16px;
+    gap: 7px;
+}
+
+.llm-model-grid strong {
+    font-size:
+            clamp(
+                    16px,
+                    1.4vw,
+                    21px
+            );
+}
+
+.llm-model-box small {
+    font-size: 10px;
+}
+
+
+/* 화살표 확대 */
+.llm-flow-arrow {
+    font-size:
+            clamp(
+                    28px,
+                    2.4vw,
+                    38px
+            );
+}
+
+
+/* 예측 결과 확대 */
+.prediction-row {
+    grid-template-columns:
+        52px
+        minmax(
+            90px,
+            1fr
+        )
+        38px;
+
+    gap: 9px;
+
+    font-size: 10px;
+}
+
+.prediction-row > div {
+    height: 8px;
+}
+
+.prediction-row strong {
+    font-size: 9px;
+}
+
+
+/* 핵심 박스 확대 */
+.llm-key-message {
+    min-height: 66px;
+
+    margin-top: 10px;
+
+    padding:
+            12px
+            18px;
+}
+
+.llm-key-icon {
+    font-size: 24px;
+}
+
+.llm-key-message small {
+    font-size: 9px;
+}
+
+.llm-key-message strong {
+    font-size:
+            clamp(
+                    10px,
+                    0.9vw,
+                    13px
+            );
+}
+
+
+/* =========================================================
+   PAGE 2
+========================================================= */
+
+.limit-layout {
+    margin-top: 12px;
+
+    grid-template-columns:
+        minmax(
+            210px,
+            0.9fr
+        )
+        minmax(
+            430px,
+            1.9fr
+        );
+
+    gap:
+            clamp(
+                    26px,
+                    3vw,
+                    50px
+            );
+}
+
+
+/* 왼쪽 LLM 박스 확대 */
+.limit-model {
+    width:
+            clamp(
+                    190px,
+                    18vw,
+                    240px
+            );
+
+    padding:
+            22px
+            18px;
+}
+
+.limit-model-head {
+    font-size: 14px;
+}
+
+.limit-brain {
+    width: 105px;
+    height: 105px;
+
+    margin:
+            18px
+            auto;
+
+    font-size: 40px;
+}
+
+.limit-model p {
+    font-size: 10px;
+}
+
+
+/* 한계 카드 크게 */
+.limit-problems {
+    gap:
+            clamp(
+                    14px,
+                    1.8vh,
+                    20px
+            );
+}
+
+.limit-card {
+    min-height: 115px;
+
+    padding:
+            16px
+            18px;
+
+    grid-template-columns:
+        44px
+        1fr;
+
+    gap: 12px;
+}
+
+.limit-number {
+    width: 40px;
+    height: 40px;
+
+    font-size: 11px;
+}
+
+.limit-card strong {
+    font-size:
+            clamp(
+                    13px,
+                    1vw,
+                    16px
+            );
+}
+
+.limit-card span {
+    font-size:
+            clamp(
+                    9px,
+                    0.8vw,
+                    11px
+            );
+}
+
+
+/* 아래 RAG 연결부 확대 */
+.rag-preview {
+    margin-top: 10px;
+
+    padding:
+            13px
+            18px;
+}
+
+.rag-preview-question {
+    font-size: 9px;
+}
+
+.rag-preview > strong {
+    font-size:
+            clamp(
+                    12px,
+                    1vw,
+                    15px
+            );
+}
+
+.rag-preview-flow {
+    margin-top: 10px;
+
+    gap:
+            clamp(
+                    10px,
+                    1.2vw,
+                    16px
+            );
+}
+
+.rag-preview-flow span {
+    padding:
+            7px
+            12px;
+
+    font-size: 10px;
+}
+
+.rag-preview-flow b {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   낮은 높이 화면에서도 너무 작아지지 않도록
+========================================================= */
+
+@media (max-height: 760px) {
+
+    .llm-prediction-area {
+        transform: scale(1.02);
+    }
+
+    .llm-input-card,
+    .llm-output-card {
+        min-height: 130px;
+    }
+
+    .limit-card {
+        min-height: 85px;
+    }
+
+    .limit-model {
+        width: 180px;
+    }
+
+    .limit-brain {
+        width: 78px;
+        height: 78px;
+    }
+}
+
+/* =========================================================
+   PRESENTATION READABILITY OVERRIDE
+   기존 디자인은 유지하고
+   발표용 가독성만 키우는 최종 덮어쓰기
+   ========================================================= */
+
+
+/* =========================================================
+   1. 전체 비율
+   HEADER / MAIN / PROGRESS
+========================================================= */
+
+.classroom-app {
+    grid-template-rows:
+        62px
+        minmax(0, 1fr)
+        92px;
+}
+
+
+/* =========================================================
+   2. MAIN
+
+   기존
+   190 / 중앙 / 270
+
+   오른쪽 챗봇만 넓힙니다.
+========================================================= */
+
+.classroom-main {
+    grid-template-columns:
+        190px
+        minmax(0, 1fr)
+        330px;
+
+    gap: 10px;
+
+    padding:
+            8px
+            10px
+            10px;
+}
+
+
+/* =========================================================
+   3. 왼쪽 학습 목록
+
+   디자인은 그대로,
+   글자만 발표 때 보이도록 조금 확대
+========================================================= */
+
+.lesson-sidebar {
+    padding: 9px;
+}
+
+
+.sidebar-title {
+    height: 42px;
+
+    font-size: 14px;
+
+    gap: 8px;
+}
+
+
+.lesson-item {
+    min-height: 63px;
+
+    padding:
+            8px
+            9px;
+
+    grid-template-columns:
+        32px
+        1fr
+        21px;
+}
+
+
+.lesson-icon {
+    font-size: 19px;
+}
+
+
+.lesson-name {
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.lesson-count {
+    margin-top: 4px;
+
+    font-size: 10px;
+}
+
+
+.lesson-status {
+    width: 19px;
+    height: 19px;
+
+    font-size: 10px;
+}
+
+
+.lesson-tip {
+    padding: 10px;
+
+    font-size: 10px;
+
+    line-height: 1.55;
+}
+
+
+.tip-label {
+    font-size: 10px;
+}
+
+
+.lesson-tip p {
+    margin-top: 5px;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   4. 컴퓨터
+
+   기존 디자인 그대로.
+   좌우 패널 때문에 너무 찌그러지지 않게 조정
+========================================================= */
+
+.computer-zone {
+    padding:
+            19px
+            0
+            29px;
+}
+
+
+.computer-shell {
+    width: min(
+            100%,
+            1180px
+    );
+
+    grid-template-rows:
+        27px
+        minmax(0, 1fr)
+        47px;
+}
+
+
+.computer-top {
+    font-size: 9px;
+}
+
+
+.monitor {
+    border-width: 8px;
+}
+
+
+/* =========================================================
+   5. 이전 / 다음 / 페이지
+
+   너무 작은 컨트롤 확대
+========================================================= */
+
+.computer-controls {
+    grid-template-columns:
+        125px
+        1fr
+        125px;
+
+    gap: 11px;
+
+    padding-top: 7px;
+}
+
+
+.pixel-control,
+.page-counter {
+    font-size: 11px;
+}
+
+
+.page-counter {
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   6. 강의 화면 상단
+
+   GRAPH RAG / 5/5 같은 글자 확대
+========================================================= */
+
+.lesson-screen-header {
+    height: 46px;
+
+    padding:
+            0
+            19px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   7. GENERIC PAGE
+
+   현재 COMING NEXT 페이지도
+   너무 텅 빈 느낌이 덜하도록 확대
+========================================================= */
+
+.generic-badge {
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+}
+
+
+.generic-lesson h1 {
+    margin:
+            11px
+            0;
+
+    font-size:
+            clamp(
+                    34px,
+                    3.2vw,
+                    48px
+            );
+}
+
+
+.generic-lesson p {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   8. POWER OFF
+
+   발표 시 명령어가 잘 보이게
+========================================================= */
+
+.power-off-screen p {
+    margin:
+            0
+            0
+            7px;
+
+    font-size: 13px;
+}
+
+
+.power-off-screen strong {
+    font-size: 16px;
+}
+
+
+.power-off-screen span {
+    margin-top: 6px;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   9. AI SIDEBAR
+
+   기존 베이지 + 픽셀풍 디자인 그대로 유지.
+   공간만 넓히고 내부 요소를 키움.
+========================================================= */
+
+.ai-sidebar {
+    grid-template-rows:
+        48px
+        42px
+        minmax(0, 1fr)
+        56px
+        170px;
+}
+
+
+/* =========================================================
+   10. AI HEADER
+========================================================= */
+
+.chat-header {
+    padding:
+            0
+            13px;
+
+    font-size: 12px;
+}
+
+
+.chat-title {
+    gap: 7px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+
+.ai-online-dot {
+    width: 7px;
+    height: 7px;
+}
+
+
+.collapse-button {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   11. 대화 기록 HEADER
+========================================================= */
+
+.chat-history-title {
+    padding:
+            0
+            12px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.chat-history-title button {
+    padding:
+            4px
+            7px;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   12. CHAT BODY
+========================================================= */
+
+.chat-body {
+    padding:
+            13px
+            12px;
+
+    gap: 12px;
+}
+
+
+.chat-message {
+    max-width: 90%;
+
+    padding:
+            10px
+            11px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+.message-label {
+    margin-bottom: 4px;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   13. CHAT INPUT
+========================================================= */
+
+.chat-input-area {
+    padding: 8px;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        42px;
+
+    gap: 7px;
+}
+
+
+.chat-input-area input {
+    height: 40px;
+
+    padding:
+            0
+            11px;
+
+    font-size: 11px;
+}
+
+
+.voice-button {
+    width: 42px;
+    height: 40px;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   14. CHARACTER AREA
+========================================================= */
+
+.character-stage {
+    border-top:
+            4px solid
+            #6d5948;
+}
+
+
+/* 말풍선 확대 */
+
+.speech-bubble {
+    right: 105px;
+    top: 18px;
+
+    width: 125px;
+
+    padding:
+            9px
+            10px;
+
+    font-size: 10px;
+
+    line-height: 1.45;
+}
+
+
+/* 캐릭터 확대 */
+
+.character-placeholder {
+    right: 17px;
+    bottom: 18px;
+
+    width: 82px;
+    height: 108px;
+}
+
+
+.placeholder-screen {
+    width: 57px;
+    height: 47px;
+
+    font-size: 11px;
+}
+
+
+.placeholder-label {
+    margin-top: 7px;
+
+    font-size: 7px;
+}
+
+
+/* 직접 만든 실제 캐릭터 넣었을 때도 확대 */
+
+.assistant-character {
+    right: 7px;
+    bottom: 17px;
+
+    width: 145px;
+    height: 140px;
+}
+
+
+/* =========================================================
+   15. PROGRESS FOOTER
+
+   여기부터 하단 진행률을
+   '장식'이 아니라 실제 HUD처럼 보이게 수정
+========================================================= */
+
+.progress-footer {
+    padding:
+            11px
+            15px;
+
+    border-top:
+            3px solid
+            #17191d;
+}
+
+
+/* =========================================================
+   16. 전체 진행률 ROW
+========================================================= */
+
+.progress-main-row {
+    grid-template-columns:
+        72px
+        minmax(210px, 0.85fr)
+        46px
+        minmax(0, 2.5fr);
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   17. 전체 학습 글자
+========================================================= */
+
+.progress-title {
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   18. 메인 진행 게이지
+
+   기존 13px → 18px
+========================================================= */
+
+.progress-bar {
+    height: 18px;
+
+    border:
+            2px solid
+            #0d0f11;
+}
+
+
+/*
+ * 기존 픽셀 게이지 디자인 유지
+ */
+.progress-fill {
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    #7da576 0,
+                    #7da576 23px,
+                    #668b61 23px,
+                    #668b61 27px
+            );
+}
+
+
+.progress-percent {
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   19. 5개 과정 진행률
+========================================================= */
+
+.module-progress {
+    gap: 7px;
+}
+
+
+.mini-progress {
+    height: 54px;
+
+    padding:
+            7px
+            9px;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        48px
+        30px;
+
+    gap: 6px;
+
+    font-size: 9px;
+}
+
+
+.mini-progress > span {
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.mini-bar {
+    height: 9px;
+}
+
+
+.mini-progress small {
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   20. LLM SLIDE 전체 가독성도 약간 확대
+========================================================= */
+
+.llm-small-title {
+    font-size: 8px;
+}
+
+
+.llm-definition p {
+    font-size:
+            clamp(
+                    11px,
+                    0.95vw,
+                    14px
+            );
+}
+
+
+.llm-card-label {
+    font-size: 8px;
+}
+
+
+.llm-model-box small {
+    font-size: 9px;
+}
+
+
+.prediction-row {
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   21. 노트북 폭 대응
+
+   기존 원본의 @media보다
+   이 코드가 아래에 있으므로 최종적으로 적용됩니다.
+========================================================= */
+
+@media (max-width: 1400px) {
+
+    .classroom-main {
+        grid-template-columns:
+            180px
+            minmax(0, 1fr)
+            285px;
+
+        gap: 7px;
+
+        padding: 7px;
+    }
+
+
+    .lesson-item {
+        min-height: 57px;
+
+        padding: 7px;
+    }
+
+
+    .lesson-name {
+        font-size: 11px;
+    }
+
+
+    .ai-sidebar {
+        grid-template-rows:
+            43px
+            38px
+            minmax(0, 1fr)
+            50px
+            145px;
+    }
+
+
+    .chat-message {
+        padding:
+                8px
+                9px;
+
+        font-size: 10px;
+    }
+
+
+    .speech-bubble {
+        right: 85px;
+
+        width: 100px;
+
+        font-size: 9px;
+    }
+
+
+    .character-placeholder {
+        width: 68px;
+        height: 92px;
+    }
+
+
+    .progress-main-row {
+        grid-template-columns:
+            62px
+            minmax(145px, 0.7fr)
+            40px
+            minmax(0, 2.5fr);
+
+        gap: 8px;
+    }
+
+
+    .mini-progress {
+        height: 48px;
+
+        padding:
+                5px
+                6px;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            36px
+            26px;
+    }
+
+}
+
+
+/* =========================================================
+   22. 높이가 낮은 발표 화면
+
+   기존 원본은 여기서 모든 걸 너무 많이 줄였는데
+   이번에는 최소한의 가독성을 유지합니다.
+========================================================= */
+
+@media (max-height: 800px) {
+
+    .classroom-app {
+        grid-template-rows:
+            58px
+            minmax(0, 1fr)
+            78px;
+    }
+
+
+    .computer-zone {
+        padding:
+                12px
+                0
+                25px;
+    }
+
+
+    .lesson-item {
+        min-height: 51px;
+    }
+
+
+    .lesson-name {
+        font-size: 11px;
+    }
+
+
+    .ai-sidebar {
+        grid-template-rows:
+            40px
+            35px
+            minmax(0, 1fr)
+            46px
+            125px;
+    }
+
+
+    .chat-message {
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+
+    .chat-input-area input {
+        height: 34px;
+
+        font-size: 10px;
+    }
+
+
+    .voice-button {
+        width: 37px;
+        height: 34px;
+    }
+
+
+    .character-placeholder {
+        width: 64px;
+        height: 84px;
+    }
+
+
+    .placeholder-screen {
+        width: 44px;
+        height: 36px;
+    }
+
+
+    .speech-bubble {
+        right: 78px;
+        top: 11px;
+
+        width: 92px;
+
+        padding: 7px;
+
+        font-size: 8px;
+    }
+
+
+    .progress-footer {
+        padding:
+                8px
+                11px;
+    }
+
+
+    .progress-bar {
+        height: 15px;
+    }
+
+
+    .mini-progress {
+        height: 43px;
+    }
+
+}
+
+/* =========================================================
+   VOICE RECORDING
+========================================================= */
+
+.voice-button.recording {
+    background: #b9645b;
+
+    animation:
+            microphonePulse
+            0.75s
+            ease-in-out
+            infinite alternate;
+}
+
+
+@keyframes microphonePulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+
+}
+
+
+
+/* =========================================================
+   LIVE VISUALIZER OVERLAY
+   classroom.css 맨 아래에 추가
+========================================================= */
+
+.monitor {
+    position: relative;
+}
+
+.live-visualizer-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    box-sizing: border-box;
+    padding: 12px;
+    background: rgba(28, 39, 47, 0.18);
+    overflow: hidden;
+}
+
+.live-visualizer-overlay .pca-visualizer {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================================
+   COMPACT PROGRESS FOOTER
+   강의 6개를 한 줄로 배치하고 하단 높이를 축소합니다.
+========================================================= */
+
+.classroom-app {
+    grid-template-rows:
+        58px
+        minmax(0, 1fr)
+        58px;
+}
+
+.progress-footer {
+    min-height: 0;
+
+    padding:
+            6px
+            12px;
+
+    border-top:
+            3px solid #17191d;
+}
+
+.progress-main-row {
+    width: 100%;
+    height: 100%;
+
+    grid-template-columns:
+        68px
+        minmax(180px, 0.65fr)
+        38px
+        minmax(0, 3fr);
+
+    gap: 8px;
+}
+
+.progress-title {
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.progress-bar {
+    height: 12px;
+}
+
+.progress-percent {
+    font-size: 10px;
+}
+
+.module-progress {
+    min-width: 0;
+
+    /* 요약을 포함한 강의 6개 */
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 5px;
+}
+
+.mini-progress {
+    min-width: 0;
+    height: 38px;
+
+    padding:
+            5px
+            7px;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        34px
+        25px;
+
+    gap: 4px;
+
+    font-size: 8px;
+}
+
+.mini-progress > span {
+    min-width: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 8px;
+}
+
+.mini-bar {
+    height: 6px;
+}
+
+.mini-progress small {
+    font-size: 8px;
+}
+
+/* 화면 폭이 조금 줄어들어도 2줄로 넘어가지 않게 유지 */
+@media (max-width: 1400px) {
+    .progress-main-row {
+        grid-template-columns:
+            58px
+            minmax(140px, 0.55fr)
+            35px
+            minmax(0, 3fr);
+
+        gap: 6px;
+    }
+
+    .module-progress {
+        grid-template-columns:
+            repeat(6, minmax(0, 1fr));
+
+        gap: 4px;
+    }
+
+    .mini-progress {
+        height: 36px;
+
+        padding:
+                4px
+                5px;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            25px
+            22px;
+
+        gap: 3px;
+    }
+}
+
+/* =========================================================
+   발표용 시각화 가독성 보정
+   모든 span/strong을 일괄 확대하지 않고 필요한 문구만 키웁니다.
+========================================================= */
+
+.live-visualizer-overlay {
+    padding: 6px;
+}
+
+.live-visualizer-overlay :is(
+    .keyword-demo-header,
+    .vector-demo-header,
+    .graph-rag-header
+) h2 {
+    font-size: clamp(18px, 1.35vw, 23px) !important;
+    line-height: 1.15 !important;
+}
+
+.live-visualizer-overlay :is(
+    .keyword-live-question,
+    .vector-live-question,
+    .graph-rag-question
+) strong {
+    font-size: clamp(13px, 0.9vw, 15px) !important;
+    line-height: 1.35 !important;
+    overflow-wrap: anywhere;
+}
+
+.live-visualizer-overlay :is(
+    .keyword-stage-caption,
+    .vector-stage-caption,
+    .graph-rag-caption
+) h3 {
+    font-size: clamp(14px, 1vw, 17px) !important;
+    line-height: 1.3 !important;
+}
+
+.live-visualizer-overlay :is(
+    .keyword-stage-caption,
+    .vector-stage-caption,
+    .graph-rag-caption
+) p {
+    font-size: clamp(11px, 0.75vw, 13px) !important;
+    line-height: 1.5 !important;
+    overflow-wrap: anywhere;
+}
+
+/* 문서 카드에는 고정 높이가 있으므로 과하게 키우지 않습니다. */
+.live-visualizer-overlay .keyword-doc-main {
+    min-width: 0;
+}
+
+.live-visualizer-overlay .keyword-doc-main strong {
+    font-size: clamp(11px, 0.78vw, 13px) !important;
+    line-height: 1.25 !important;
+}
+
+.live-visualizer-overlay .keyword-doc-main p {
+    margin: 3px 0 0 !important;
+    font-size: clamp(10px, 0.7vw, 12px) !important;
+    line-height: 1.35 !important;
+    overflow-wrap: anywhere;
+}
+
+.live-visualizer-overlay :is(
+    .keyword-context-panel,
+    .vector-context-panel,
+    .graph-rag-context
+) {
+    font-size: clamp(10px, 0.72vw, 12px) !important;
+    line-height: 1.4 !important;
+    overflow-wrap: anywhere;
+}
+
+.live-visualizer-overlay svg text {
+    font-size: 11px !important;
+    font-weight: 700;
+}
+
+/* 닫기 버튼은 글자가 아니라 클릭 영역만 확보합니다. */
+.live-visualizer-overlay :is(
+    .keyword-demo-header-right,
+    .vector-demo-header-right,
+    .graph-rag-header-actions
+) button {
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+    padding: 0;
+    font-size: 18px !important;
+    line-height: 1;
+}
+
+/* =========================================================
+   ARI IDLE CHARACTER
+========================================================= */
+
+.ari-character {
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+    pointer-events: none;
+    animation: ariIdleFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes ariIdleFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ari-character {
+        animation: none;
+    }
+}
+
+/* =========================================================
+   ARI CHARACTER STAGE POSITION
+   기존 로봇 자리 대신 아리와 말풍선을 한 세트로 정렬합니다.
+========================================================= */
+
+.character-stage .assistant-character.ari-character {
+    right: 9px;
+    bottom: 2px;
+    width: 170px;
+    height: 170px;
+    z-index: 2;
+}
+
+.character-stage .speech-bubble {
+    right: 125px;
+    top: 20px;
+    width: 135px;
+    z-index: 3;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+/* 말풍선 꼬리가 오른쪽 아래의 아리를 향하도록 조정 */
+.character-stage .speech-bubble::after {
+    right: -9px;
+    bottom: 10px;
+}
+
+@media (max-width: 1450px) {
+    .character-stage .assistant-character.ari-character {
+        width: 145px;
+        height: 145px;
+    }
+
+    .character-stage .speech-bubble {
+        right: 105px;
+        top: 16px;
+        width: 120px;
+    }
+}

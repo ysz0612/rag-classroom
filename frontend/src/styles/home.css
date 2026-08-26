@@ -1,0 +1,1569 @@
+/* =========================================================
+   HOME ROOT
+========================================================= */
+
+.home-world {
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-rows:
+        62px
+        minmax(0, 1fr)
+        112px;
+
+    background: #111820;
+
+    color: #f5f3ed;
+
+    font-family:
+            Pretendard,
+            "Noto Sans KR",
+            "Malgun Gothic",
+            Arial,
+            sans-serif;
+}
+
+
+/* =========================================================
+   CORRIDOR
+========================================================= */
+
+.home-corridor {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: #d8c09d;
+}
+
+
+/* =========================================================
+   CEILING
+========================================================= */
+
+.corridor-ceiling {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 15px;
+
+    border-bottom:
+            4px solid
+            #402b1d;
+
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    #744b30 0,
+                    #744b30 92px,
+                    #5f3c26 92px,
+                    #5f3c26 98px
+            );
+}
+
+
+/* =========================================================
+   MAIN LAMP
+========================================================= */
+
+.corridor-main-lamp {
+    position: absolute;
+
+    z-index: 20;
+
+    left: 50%;
+    top: 0;
+
+    width: 110px;
+
+    transform:
+            translateX(-50%);
+
+    pointer-events: none;
+}
+
+
+.lamp-cable {
+    display: block;
+
+    width: 4px;
+    height: 39px;
+
+    margin: auto;
+
+    background: #292826;
+}
+
+
+.lamp-cap {
+    display: block;
+
+    width: 76px;
+    height: 29px;
+
+    margin: auto;
+
+    background: #343936;
+
+    clip-path:
+            polygon(
+                    32% 0,
+                    68% 0,
+                    100% 100%,
+                    0 100%
+            );
+}
+
+
+.lamp-light {
+    display: block;
+
+    width: 36px;
+    height: 8px;
+
+    margin:
+            -1px
+            auto;
+
+    background: #ffd06c;
+}
+
+
+.lamp-light-glow {
+    position: absolute;
+
+    left: 50%;
+    top: 67px;
+
+    width: 600px;
+    height: 470px;
+
+    transform: translateX(-50%);
+
+    clip-path:
+            polygon(
+                    44% 0,
+                    56% 0,
+                    100% 100%,
+                    0 100%
+            );
+
+    background:
+            rgba(255, 225, 161, 0.13);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ROOM / PORTAL AREA
+========================================================= */
+
+.portal-zone {
+    position: absolute;
+    z-index: 15;
+
+    /*
+     * 기존보다 아래로 내림
+     */
+    top: 14%;
+
+    width: 340px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.portal-left {
+    left: 13%;
+}
+
+
+.portal-right {
+    right: 13%;
+}
+
+
+/* =========================================================
+   ROOM SIGN
+========================================================= */
+
+.portal-sign {
+    position: relative;
+
+    width: 240px;
+    height: 88px;
+
+    box-sizing: border-box;
+
+    padding:
+            0
+            18px;
+
+    border:
+            4px solid
+            #4d301e;
+
+    border-radius: 4px;
+
+    background: #8a5834;
+
+    color: #f5dfac;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    box-shadow:
+            5px 5px 0
+            rgba(63, 40, 24, 0.18);
+}
+
+
+.portal-sign::before,
+.portal-sign::after {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #33261d;
+}
+
+
+.portal-sign::before {
+    left: 9px;
+}
+
+
+.portal-sign::after {
+    right: 9px;
+}
+
+
+.portal-sign > .anticon {
+    font-size: 35px;
+}
+
+
+.portal-sign div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.portal-sign small {
+    color: #e8c990;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+.portal-sign strong {
+    color: #ffe7ae;
+
+    font-size: 21px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   DOOR FRAME
+========================================================= */
+
+.portal-frame {
+    position: relative;
+
+    margin-top: 10px;
+
+    padding:
+            10px
+            10px
+            0;
+
+    border: 6px solid #654027;
+    border-bottom: 10px solid #54331f;
+
+    background: #74492c;
+
+    box-shadow:
+            7px 7px 0 rgba(60, 41, 28, 0.16);
+}
+
+
+.portal-frame::before {
+    content: "";
+
+    position: absolute;
+
+    left: -10px;
+    right: -10px;
+    top: -12px;
+
+    height: 11px;
+
+    border:
+            3px solid
+            #55341f;
+
+    background: #7c5132;
+}
+
+
+/* =========================================================
+   DOORS
+========================================================= */
+
+.portal-door {
+    position: relative;
+
+    display: block;
+
+    width: 200px;
+    height: 350px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 4px solid rgba(20, 23, 22, 0.64);
+    border-radius: 1px;
+
+    cursor: pointer;
+
+    transition:
+            filter 120ms ease,
+            transform 120ms ease;
+}
+
+
+.blue-door {
+    background: #1d3a4c;
+}
+
+
+.green-door {
+    background: #2c4d20;
+}
+
+
+.portal-door:hover {
+    filter:
+            brightness(1.08);
+
+    transform:
+            translateY(-2px);
+}
+
+
+/* =========================================================
+   DOOR GLASS
+========================================================= */
+
+.portal-glass {
+    position: absolute;
+
+    left: 50%;
+    top: 30px;
+
+    width: 100px;
+    height: 108px;
+
+    transform:
+            translateX(-50%);
+
+    overflow: hidden;
+
+    border:
+            7px solid
+            rgba(17, 23, 24, 0.55);
+
+    background: #8fd4e5;
+}
+
+
+.portal-glass i {
+    position: absolute;
+
+    top: -30px;
+
+    width: 16px;
+    height: 170px;
+
+    background:
+            rgba(255, 255, 255, 0.32);
+
+    transform:
+            rotate(38deg);
+}
+
+
+.portal-glass .shine-a {
+    left: 20px;
+}
+
+
+.portal-glass .shine-b {
+    left: 63px;
+
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   DOOR PANELS
+========================================================= */
+
+.door-inner-panel {
+    position: absolute;
+
+    left: 50%;
+
+    width: 108px;
+
+    transform:
+            translateX(-50%);
+
+    border:
+            4px solid
+            rgba(11, 21, 24, 0.22);
+}
+
+
+.panel-a {
+    top: 166px;
+
+    height: 50px;
+}
+
+
+.panel-b {
+    top: 233px;
+
+    height: 62px;
+}
+
+
+/* =========================================================
+   HANDLE
+========================================================= */
+
+.gold-handle {
+    position: absolute;
+
+    z-index: 4;
+
+    left: 12px;
+    top: 182px;
+
+    width: 25px;
+    height: 37px;
+
+    border:
+            2px solid
+            #744817;
+
+    border-radius: 4px;
+
+    background: #d19522;
+}
+
+
+.gold-handle i {
+    position: absolute;
+
+    left: 15px;
+    top: 8px;
+
+    width: 30px;
+    height: 7px;
+
+    border:
+            2px solid
+            #754713;
+
+    background: #d79b27;
+}
+
+
+/* =========================================================
+   ENTER MAT
+========================================================= */
+
+.portal-mat {
+    width: 220px;
+    height: 42px;
+
+    margin-top: 5px;
+
+    box-sizing: border-box;
+
+    border: 3px solid #3a2d26;
+    border-radius: 2px;
+
+    color: #f1e2ca;
+
+    font-family: Consolas, monospace;
+
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+.blue-mat {
+    background: #315f78;
+}
+
+
+.green-mat {
+    background: #4a7133;
+}
+
+
+/* =========================================================
+   CENTER RAG
+========================================================= */
+
+.corridor-center {
+    position: absolute;
+    z-index: 11;
+
+    left: 50%;
+    top: 28%;
+
+    width: 560px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+
+.rag-title-block > span {
+    color: #756959;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+.rag-title-block h1 {
+    margin: 10px 0 14px;
+
+    color: #263b50;
+
+    font-family: Consolas, monospace;
+
+    font-size: 110px;
+    font-weight: 900;
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+
+    text-shadow: none;
+}
+
+
+.rag-ornament {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+.rag-ornament i {
+    width: 100px;
+    height: 3px;
+
+    background: #715d48;
+}
+
+
+.rag-ornament b {
+    width: 10px;
+    height: 10px;
+
+    background: #715d48;
+
+    transform:
+            rotate(45deg);
+}
+
+
+.rag-title-block p {
+    margin: 20px 0 0;
+
+    color: #514b45;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1.8;
+}
+
+
+.rag-title-block p strong {
+    color: #294c67;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   WELCOME BOARD
+========================================================= */
+
+.corridor-welcome-board {
+    position: absolute;
+
+    left: 50%;
+    top: 330px;
+
+    width: 145px;
+    height: 125px;
+
+    box-sizing: border-box;
+
+    transform: translateX(-50%);
+
+    border: 5px solid #65422a;
+
+    background: #e1c492;
+
+    color: #33291f;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    font-family: Consolas, monospace;
+
+    box-shadow:
+            5px 5px 0 rgba(70, 46, 30, 0.16);
+}
+
+
+.corridor-welcome-board span,
+.corridor-welcome-board strong {
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+.corridor-welcome-board small {
+    font-size: 8px;
+}
+
+
+.welcome-face {
+    margin-top: 6px;
+
+    color: #384b4d;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   SIDE BOARDS
+========================================================= */
+
+.pixel-board {
+    position: absolute;
+
+    z-index: 9;
+
+    top: 40%;
+
+    width: 135px;
+
+    box-sizing: border-box;
+
+    border: 5px solid #64442f;
+
+    background: #dfc495;
+
+    color: #382b21;
+
+    font-family: Consolas, monospace;
+}
+
+
+.pixel-board.notice {
+    left: 5%;
+
+    min-height: 138px;
+
+    padding: 12px;
+}
+
+
+.pixel-board.lab-guide {
+    right: 5%;
+
+    min-height: 150px;
+
+    padding:
+            11px
+            12px;
+}
+
+
+.pixel-board > strong {
+    display: block;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+.memo-grid {
+    margin-top: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 8px;
+}
+
+
+.memo-grid i {
+    height: 29px;
+
+    border:
+            1px solid
+            rgba(57, 43, 30, 0.2);
+}
+
+
+.memo-grid i:nth-child(1) {
+    background: #7d9c55;
+}
+
+
+.memo-grid i:nth-child(2) {
+    background: #eee0c3;
+}
+
+
+.memo-grid i:nth-child(3) {
+    background: #66a6be;
+}
+
+
+.memo-grid i:nth-child(4) {
+    background: #c97c80;
+}
+
+
+/* =========================================================
+   LAB GUIDE
+========================================================= */
+
+.pixel-board.lab-guide {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.pixel-board.lab-guide span {
+    font-size: 8px;
+
+    font-weight: 900;
+}
+
+
+.pixel-board .keyword {
+    color: #884f4b;
+}
+
+
+.pixel-board .vector {
+    color: #416d83;
+}
+
+
+.pixel-board .graph {
+    color: #53774a;
+}
+
+
+/* =========================================================
+   SIDE LAMPS
+========================================================= */
+
+.side-lamp {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 20%;
+
+    width: 37px;
+    height: 85px;
+}
+
+
+.lamp-left {
+    left: 8%;
+}
+
+
+.lamp-right {
+    right: 8%;
+}
+
+
+.side-lamp .lamp-top {
+    position: absolute;
+
+    left: 5px;
+    top: 0;
+
+    width: 27px;
+    height: 16px;
+
+    background: #353936;
+
+    clip-path:
+            polygon(
+                    30% 0,
+                    70% 0,
+                    100% 100%,
+                    0 100%
+            );
+}
+
+
+.side-lamp .lamp-body {
+    position: absolute;
+
+    left: 7px;
+    top: 15px;
+
+    width: 23px;
+    height: 44px;
+
+    border:
+            3px solid
+            #4c3825;
+
+    background: #f2ba55;
+}
+
+
+.side-lamp .lamp-bottom {
+    position: absolute;
+
+    left: 11px;
+    top: 60px;
+
+    width: 16px;
+    height: 20px;
+
+    background: #353633;
+}
+
+
+/* =========================================================
+   PLANTS
+========================================================= */
+
+.css-plant {
+    position: absolute;
+
+    z-index: 10;
+
+    bottom: 5%;
+
+    width: 90px;
+    height: 120px;
+}
+
+
+.plant-left {
+    left: 6%;
+}
+
+
+.plant-right {
+    right: 6%;
+}
+
+
+.css-pot {
+    position: absolute;
+
+    left: 20px;
+    bottom: 0;
+
+    width: 42px;
+    height: 40px;
+
+    border:
+            3px solid
+            #554339;
+
+    background: #ddd1b5;
+
+    clip-path:
+            polygon(
+                    5% 0,
+                    95% 0,
+                    82% 100%,
+                    18% 100%
+            );
+}
+
+
+.css-leaves i {
+    position: absolute;
+
+    left: 31px;
+    bottom: 32px;
+
+    width: 18px;
+    height: 60px;
+
+    border-radius:
+            100% 0
+            100% 0;
+
+    transform-origin:
+            bottom;
+
+    background: #5e8756;
+}
+
+
+.css-leaves i:nth-child(1) {
+    transform:
+            rotate(-55deg);
+}
+
+
+.css-leaves i:nth-child(2) {
+    transform:
+            rotate(-27deg);
+}
+
+
+.css-leaves i:nth-child(3) {
+    transform:
+            rotate(0deg);
+}
+
+
+.css-leaves i:nth-child(4) {
+    transform:
+            rotate(28deg);
+}
+
+
+.css-leaves i:nth-child(5) {
+    transform:
+            rotate(55deg);
+}
+
+
+/* =========================================================
+   WOOD WALL
+========================================================= */
+
+.corridor-wood-wall {
+    position: absolute;
+
+    z-index: 1;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 28%;
+
+    border-top:
+            5px solid
+            #553824;
+
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    #845a3c 0,
+                    #845a3c 112px,
+                    #744d34 112px,
+                    #744d34 118px
+            );
+}
+
+
+/* =========================================================
+   FLOOR
+========================================================= */
+
+.corridor-floor {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 11%;
+
+    border-top:
+            5px solid
+            #483024;
+
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    #754d33 0,
+                    #754d33 145px,
+                    #68442e 145px,
+                    #68442e 151px
+            );
+}
+
+
+/* =========================================================
+   BOTTOM INFO BAR
+========================================================= */
+
+.home-feature-bar {
+    position: relative;
+
+    z-index: 50;
+
+    width: 100%;
+    min-height: 112px;
+
+    box-sizing: border-box;
+
+    padding:
+            0
+            28px;
+
+    background: #17232d;
+
+    border-top:
+            4px solid
+            #0c1319;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   FEATURE CARD
+========================================================= */
+
+.feature-card {
+    position: relative;
+
+    min-width: 0;
+
+    padding:
+            20px
+            30px;
+
+    box-sizing: border-box;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    display: grid;
+
+    grid-template-columns:
+        48px
+        44px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 16px;
+
+    text-align: left;
+
+    box-shadow: none;
+}
+
+
+.feature-card:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 22px;
+    bottom: 22px;
+
+    width: 1px;
+
+    background: #40505d;
+}
+
+
+button.feature-card {
+    appearance: none;
+
+    font: inherit;
+
+    cursor: pointer;
+}
+
+
+button.feature-card:hover {
+    background: #1c2a35;
+}
+
+
+/* =========================================================
+   FEATURE NUMBER
+========================================================= */
+
+.feature-number {
+    width: 44px;
+    height: 44px;
+
+    box-sizing: border-box;
+
+    border:
+            2px solid
+            #8b7448;
+
+    color: #efc45f;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   FEATURE ICON
+========================================================= */
+
+.feature-card > .anticon {
+    color: #eadbb8;
+
+    font-size: 31px;
+}
+
+
+/* =========================================================
+   FEATURE TEXT
+========================================================= */
+
+.feature-card > div {
+    min-width: 0;
+}
+
+
+.feature-card strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #f0c766;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.3px;
+}
+
+
+.feature-card p {
+    margin: 0;
+
+    color: #d3d9dd;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   REMOVE '바로가기'
+========================================================= */
+
+.feature-action {
+    display: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE WIDTH
+========================================================= */
+
+@media (max-width: 1400px) {
+
+    .portal-left {
+        left: 9%;
+    }
+
+
+    .portal-right {
+        right: 9%;
+    }
+
+
+    .portal-zone {
+        transform:
+                scale(0.9);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .corridor-center {
+        transform:
+                translateX(-50%)
+                scale(0.9);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .pixel-board.notice {
+        left: 2.5%;
+    }
+
+
+    .pixel-board.lab-guide {
+        right: 2.5%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALLER WIDTH
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    .portal-left {
+        left: 4%;
+    }
+
+
+    .portal-right {
+        right: 4%;
+    }
+
+
+    .portal-zone {
+        transform:
+                scale(0.78);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .corridor-center {
+        transform:
+                translateX(-50%)
+                scale(0.78);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .pixel-board,
+    .side-lamp,
+    .css-plant {
+        display: none;
+    }
+
+
+    .feature-card {
+        padding:
+                15px
+                18px;
+
+        grid-template-columns:
+            42px
+            38px
+            minmax(0, 1fr);
+
+        gap: 10px;
+    }
+
+
+    .feature-card strong {
+        font-size: 14px;
+    }
+
+
+    .feature-card p {
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   SHORT HEIGHT
+========================================================= */
+
+@media (max-height: 800px) {
+
+    .home-world {
+        grid-template-rows:
+            62px
+            minmax(0, 1fr)
+            100px;
+    }
+
+
+    .portal-zone {
+        top: 2%;
+
+        transform:
+                scale(0.8);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .corridor-center {
+        top: 18%;
+
+        transform:
+                translateX(-50%)
+                scale(0.78);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .pixel-board {
+        top: 33%;
+
+        transform:
+                scale(0.8);
+    }
+
+
+    .side-lamp {
+        transform:
+                scale(0.8);
+    }
+
+
+    .css-plant {
+        transform:
+                scale(0.8);
+
+        transform-origin:
+                bottom center;
+    }
+
+
+    .feature-card {
+        padding:
+                14px
+                20px;
+    }
+
+
+    .feature-card strong {
+        font-size: 14px;
+    }
+
+
+    .feature-card p {
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SHORT
+========================================================= */
+
+@media (max-height: 680px) {
+
+    .home-world {
+        grid-template-rows:
+            56px
+            minmax(0, 1fr)
+            88px;
+    }
+
+
+    .portal-zone {
+        top: 1%;
+
+        transform:
+                scale(0.67);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .corridor-center {
+        top: 12%;
+
+        transform:
+                translateX(-50%)
+                scale(0.65);
+
+        transform-origin:
+                top center;
+    }
+
+
+    .pixel-board,
+    .side-lamp,
+    .css-plant {
+        display: none;
+    }
+
+
+    .feature-card {
+        padding:
+                10px
+                14px;
+
+        grid-template-columns:
+            36px
+            32px
+            minmax(0, 1fr);
+    }
+
+
+    .feature-number {
+        width: 34px;
+        height: 34px;
+
+        font-size: 11px;
+    }
+
+
+    .feature-card > .anticon {
+        font-size: 24px;
+    }
+
+
+    .feature-card strong {
+        margin-bottom: 2px;
+
+        font-size: 12px;
+    }
+
+
+    .feature-card p {
+        font-size: 9px;
+    }
+
+}

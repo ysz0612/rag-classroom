@@ -1,0 +1,2133 @@
+/* =========================================================
+   RAG LESSON
+========================================================= */
+
+.rag-screen {
+    background: #f7f4ee;
+    color: #24313d;
+}
+
+
+/* =========================================================
+   COMMON SLIDE
+========================================================= */
+
+.rag-slide {
+    height: calc(100% - 46px);
+
+    overflow: hidden;
+
+    padding:
+            clamp(16px, 2vw, 26px)
+            clamp(20px, 2.5vw, 38px);
+
+    background: #f7f4ee;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.rag-slide-title-row {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 16px;
+}
+
+
+.rag-section-number {
+    color: #cfaa4c;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size:
+            clamp(
+                    23px,
+                    2vw,
+                    32px
+            );
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+.rag-small-title {
+    margin-bottom: 4px;
+
+    color: #7f8a92;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size:
+            clamp(
+                    7px,
+                    .65vw,
+                    10px
+            );
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+
+.rag-slide-title-row h1 {
+    margin: 0;
+
+    color: #24394e;
+
+    font-size:
+            clamp(
+                    25px,
+                    2.4vw,
+                    38px
+            );
+
+    line-height: 1.15;
+}
+
+
+.rag-slide-title-row h1 span {
+    margin-left: 8px;
+
+    color: #477392;
+
+    font-size: .7em;
+}
+
+
+/* =========================================================
+   PAGE 01 - DEFINITION
+========================================================= */
+
+.rag-definition {
+    margin-top: 18px;
+
+    padding:
+            13px
+            17px;
+
+    border-left:
+            5px solid
+            #527b97;
+
+    background: #ebe8e1;
+}
+
+
+.rag-definition strong {
+    color: #253a4d;
+
+    font-size:
+            clamp(
+                    12px,
+                    1vw,
+                    15px
+            );
+}
+
+
+.rag-definition p {
+    margin:
+            5px
+            0
+            0;
+
+    color: #66625d;
+
+    font-size:
+            clamp(
+                    9px,
+                    .8vw,
+                    12px
+            );
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   MAIN FLOW
+========================================================= */
+
+.rag-main-flow {
+    margin-top: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(110px, 1fr)
+        30px
+        minmax(110px, 1fr)
+        30px
+        minmax(110px, 1fr)
+        30px
+        minmax(110px, 1fr);
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.rag-flow-card {
+    min-height: 128px;
+
+    padding:
+            13px
+            10px;
+
+    border:
+            2px solid
+            #899098;
+
+    background: #ffffff;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.rag-flow-card.question {
+    border-color: #778d9c;
+}
+
+
+.rag-flow-card.search {
+    border-color: #b7954c;
+
+    background: #fbf6e8;
+}
+
+
+.rag-flow-card.context {
+    border-color: #6f9483;
+
+    background: #eff6f1;
+}
+
+
+.rag-flow-card.llm {
+    border-color: #6b7f98;
+
+    background: #edf2f6;
+}
+
+
+.rag-flow-icon {
+    width: 34px;
+    height: 34px;
+
+    margin-bottom: 8px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+            2px solid
+            currentColor;
+
+    color: #405b70;
+
+    font-size: 17px;
+}
+
+
+.rag-flow-card small {
+    color: #8a8d8f;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.rag-flow-card strong {
+    margin-top: 5px;
+
+    color: #293b4a;
+
+    font-size:
+            clamp(
+                    10px,
+                    .85vw,
+                    13px
+            );
+}
+
+
+.rag-flow-card span {
+    margin-top: 6px;
+
+    color: #6d6b67;
+
+    font-size:
+            clamp(
+                    8px,
+                    .7vw,
+                    10px
+            );
+
+    line-height: 1.45;
+}
+
+
+.rag-flow-arrow {
+    color: #82909a;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size:
+            clamp(
+                    19px,
+                    1.6vw,
+                    27px
+            );
+
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   3 POINTS
+========================================================= */
+
+.rag-three-points {
+    margin-top: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 10px;
+}
+
+
+.rag-point {
+    min-height: 58px;
+
+    padding:
+            9px
+            12px;
+
+    border-top:
+            2px solid
+            #a59b89;
+
+    background: #eee9e0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.rag-point-number {
+    color: #c39d46;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 17px;
+
+    font-weight: 900;
+}
+
+
+.rag-point strong {
+    display: block;
+
+    color: #334756;
+
+    font-size: 11px;
+}
+
+
+.rag-point p {
+    margin:
+            2px
+            0
+            0;
+
+    color: #74706b;
+
+    font-size: 8px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   KEY MESSAGE
+========================================================= */
+
+.rag-key-message {
+    margin-top: 13px;
+
+    padding:
+            9px
+            14px;
+
+    border:
+            2px solid
+            #b79750;
+
+    background: #f5edda;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.rag-key-message > span {
+    color: #bd9846;
+
+    font-size: 17px;
+}
+
+
+.rag-key-message small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #9c7e3f;
+
+    font-size: 7px;
+
+    font-weight: 900;
+}
+
+
+.rag-key-message strong {
+    color: #443f38;
+
+    font-size:
+            clamp(
+                    9px,
+                    .8vw,
+                    12px
+            );
+}
+
+
+/* =========================================================
+   PAGE 02
+========================================================= */
+
+.rag-compare-slide {
+    position: relative;
+}
+
+
+/* =========================================================
+   SAME QUESTION
+========================================================= */
+
+.rag-compare-question {
+    width: min(520px, 70%);
+
+    min-height: 62px;
+
+    margin:
+            15px
+            auto
+            0;
+
+    padding:
+            10px
+            17px;
+
+    border:
+            2px solid
+            #657887;
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+}
+
+
+.rag-compare-question > .anticon {
+    color: #42657c;
+
+    font-size: 23px;
+}
+
+
+.rag-compare-question div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.rag-compare-question small {
+    color: #92979a;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+.rag-compare-question strong {
+    color: #354755;
+
+    font-size:
+            clamp(
+                    10px,
+                    .9vw,
+                    13px
+            );
+}
+
+
+/* =========================================================
+   BRANCH
+========================================================= */
+
+.rag-branch-line {
+    position: relative;
+
+    width: 68%;
+
+    height: 47px;
+
+    margin: auto;
+}
+
+
+.rag-branch-main {
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 2px;
+    height: 18px;
+
+    transform:
+            translateX(-50%);
+
+    background: #9b927f;
+}
+
+
+.rag-branch-horizontal {
+    position: absolute;
+
+    left: 16.666%;
+    right: 16.666%;
+    top: 18px;
+
+    height: 2px;
+
+    background: #9b927f;
+}
+
+
+.rag-branch-down {
+    position: absolute;
+
+    top: 18px;
+
+    width: 2px;
+    height: 29px;
+
+    background: #9b927f;
+}
+
+
+.rag-branch-down.left {
+    left: 16.666%;
+}
+
+
+.rag-branch-down.center {
+    left: 50%;
+}
+
+
+.rag-branch-down.right {
+    right: 16.666%;
+}
+
+
+/* =========================================================
+   TYPE GRID
+========================================================= */
+
+.rag-type-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:
+            clamp(
+                    10px,
+                    1.3vw,
+                    18px
+            );
+}
+
+
+.rag-type-card {
+    position: relative;
+
+    min-height: 255px;
+
+    padding:
+            15px
+            15px
+            13px;
+
+    border:
+            3px solid
+            #6f7d86;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+
+.rag-type-card.keyword {
+    border-color: #987060;
+}
+
+
+.rag-type-card.vector {
+    border-color: #547e98;
+}
+
+
+.rag-type-card.graph {
+    border-color: #67835d;
+}
+
+
+.rag-type-number {
+    position: absolute;
+
+    left: 9px;
+    top: 8px;
+
+    color: #a59c8d;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 900;
+}
+
+
+.rag-type-icon {
+    width: 45px;
+    height: 45px;
+
+    margin:
+            0
+            auto
+            8px;
+
+    border:
+            3px solid
+            currentColor;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #4e6677;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+.keyword .rag-type-icon {
+    color: #8f6255;
+}
+
+
+.vector .rag-type-icon {
+    color: #4f7892;
+}
+
+
+/* graph node icon */
+
+.graph-icon {
+    position: relative;
+
+    border: 0;
+}
+
+
+.graph-icon::before,
+.graph-icon::after,
+.graph-icon i {
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border:
+            3px solid
+            #627f59;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    content: "";
+}
+
+
+.graph-icon::before {
+    left: 2px;
+    bottom: 2px;
+}
+
+
+.graph-icon::after {
+    right: 2px;
+    bottom: 2px;
+}
+
+
+.graph-icon i:first-child {
+    left: 50%;
+    top: 0;
+
+    transform:
+            translateX(-50%);
+}
+
+
+.graph-icon i:nth-child(2) {
+    width: 29px;
+    height: 2px;
+
+    left: 7px;
+    top: 26px;
+
+    border: 0;
+    border-radius: 0;
+
+    background: #627f59;
+
+    transform:
+            rotate(28deg);
+}
+
+
+.graph-icon i:nth-child(3) {
+    width: 29px;
+    height: 2px;
+
+    right: 7px;
+    top: 26px;
+
+    border: 0;
+    border-radius: 0;
+
+    background: #627f59;
+
+    transform:
+            rotate(-28deg);
+}
+
+
+.rag-type-card > small {
+    color: #96918a;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.rag-type-card h2 {
+    margin:
+            4px
+            0
+            8px;
+
+    color: #344a59;
+
+    font-size:
+            clamp(
+                    20px,
+                    1.8vw,
+                    29px
+            );
+}
+
+
+.rag-type-line {
+    width: 34px;
+    height: 3px;
+
+    margin:
+            0
+            auto
+            9px;
+
+    background: #afa495;
+}
+
+
+.rag-type-card strong {
+    display: block;
+
+    color: #384854;
+
+    font-size:
+            clamp(
+                    9px,
+                    .75vw,
+                    11px
+            );
+}
+
+
+.rag-type-card p {
+    min-height: 49px;
+
+    margin:
+            8px
+            0
+            10px;
+
+    color: #6b6b68;
+
+    font-size:
+            clamp(
+                    8px,
+                    .65vw,
+                    10px
+            );
+
+    line-height: 1.55;
+}
+
+
+.rag-best-for {
+    width: 80%;
+
+    margin: auto;
+
+    padding:
+            5px
+            4px;
+
+    border:
+            1px solid
+            #aaa092;
+
+    color: #504b45;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+.keyword .rag-best-for {
+    background: #f4e8e3;
+}
+
+
+.vector .rag-best-for {
+    background: #e5f0f5;
+}
+
+
+.graph .rag-best-for {
+    background: #e9f1e6;
+}
+
+
+/* =========================================================
+   CONCLUSION
+========================================================= */
+
+.rag-compare-conclusion {
+    margin-top: 13px;
+
+    padding:
+            10px
+            15px;
+
+    border:
+            2px solid
+            #a98743;
+
+    background: #f4ecd8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+}
+
+
+.rag-compare-conclusion span {
+    color: #a5803c;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.rag-compare-conclusion strong {
+    color: #49423a;
+
+    font-size:
+            clamp(
+                    9px,
+                    .85vw,
+                    12px
+            );
+}
+
+
+/* =========================================================
+   LOW HEIGHT
+========================================================= */
+
+@media (max-height: 800px) {
+
+    .rag-slide {
+        padding:
+                12px
+                24px;
+    }
+
+
+    .rag-definition {
+        margin-top: 11px;
+
+        padding:
+                9px
+                13px;
+    }
+
+
+    .rag-main-flow {
+        margin-top: 11px;
+    }
+
+
+    .rag-flow-card {
+        min-height: 96px;
+
+        padding:
+                8px;
+    }
+
+
+    .rag-flow-icon {
+        width: 27px;
+        height: 27px;
+
+        margin-bottom: 4px;
+
+        font-size: 13px;
+    }
+
+
+    .rag-three-points {
+        margin-top: 10px;
+    }
+
+
+    .rag-point {
+        min-height: 45px;
+
+        padding:
+                6px
+                9px;
+    }
+
+
+    .rag-key-message {
+        margin-top: 8px;
+
+        padding:
+                6px
+                11px;
+    }
+
+
+    .rag-compare-question {
+        min-height: 49px;
+
+        margin-top: 8px;
+    }
+
+
+    .rag-branch-line {
+        height: 34px;
+    }
+
+
+    .rag-branch-main {
+        height: 12px;
+    }
+
+
+    .rag-branch-horizontal {
+        top: 12px;
+    }
+
+
+    .rag-branch-down {
+        top: 12px;
+
+        height: 22px;
+    }
+
+
+    .rag-type-card {
+        min-height: 190px;
+
+        padding:
+                10px;
+    }
+
+
+    .rag-type-icon {
+        width: 35px;
+        height: 35px;
+
+        margin-bottom: 4px;
+    }
+
+
+    .rag-type-card p {
+        min-height: 35px;
+
+        margin:
+                4px
+                0
+                6px;
+    }
+
+
+    .rag-compare-conclusion {
+        margin-top: 7px;
+
+        padding: 6px;
+    }
+
+}
+
+/* =========================================================
+   RAG PRESENTATION SIZE OVERRIDE
+   발표 화면용 글씨 확대
+========================================================= */
+
+
+/* ---------- 상단 슬라이드 제목 ---------- */
+
+.rag-small-title {
+    font-size: clamp(10px, 0.9vw, 14px);
+}
+
+.rag-slide-title-row h1 {
+    font-size: clamp(32px, 3vw, 46px);
+}
+
+.rag-slide-title-row h1 span {
+    font-size: 0.72em;
+}
+
+.rag-section-number {
+    font-size: clamp(30px, 2.6vw, 40px);
+}
+
+
+/* ---------- RAG 정의 ---------- */
+
+.rag-definition {
+    padding: 15px 19px;
+}
+
+.rag-definition strong {
+    font-size: clamp(15px, 1.25vw, 19px);
+}
+
+.rag-definition p {
+    margin-top: 7px;
+
+    font-size: clamp(12px, 1vw, 15px);
+    line-height: 1.5;
+}
+
+
+/* ---------- 질문 → 검색 → Context → LLM ---------- */
+
+.rag-flow-card small {
+    font-size: clamp(9px, 0.7vw, 11px);
+}
+
+.rag-flow-card strong {
+    font-size: clamp(13px, 1.05vw, 16px);
+}
+
+.rag-flow-card span {
+    font-size: clamp(11px, 0.85vw, 13px);
+    line-height: 1.45;
+}
+
+.rag-flow-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 20px;
+}
+
+.rag-flow-arrow {
+    font-size: clamp(25px, 2vw, 34px);
+}
+
+
+/* ---------- 검색 / 보강 / 생성 ---------- */
+
+.rag-point-number {
+    font-size: 21px;
+}
+
+.rag-point strong {
+    font-size: clamp(13px, 1vw, 16px);
+}
+
+.rag-point p {
+    font-size: clamp(10px, 0.8vw, 12px);
+}
+
+
+/* ---------- 하단 핵심 문장 ---------- */
+
+.rag-key-message small {
+    font-size: 9px;
+}
+
+.rag-key-message strong {
+    font-size: clamp(12px, 1vw, 15px);
+}
+
+/* =========================================================
+   RAG PAGE 02
+   비교 페이지는 기존 크기로 복구
+========================================================= */
+
+/* 같은 질문 */
+
+.rag-compare-question small {
+    font-size: 7px;
+}
+
+.rag-compare-question strong {
+    font-size: clamp(10px, 0.9vw, 13px);
+}
+
+.rag-compare-question > .anticon {
+    font-size: 23px;
+}
+
+
+/* Keyword / Vector / Graph */
+
+.rag-type-card > small {
+    font-size: 7px;
+}
+
+.rag-type-card h2 {
+    font-size: clamp(20px, 1.8vw, 29px);
+}
+
+.rag-type-card strong {
+    font-size: clamp(9px, 0.75vw, 11px);
+}
+
+.rag-type-card p {
+    font-size: clamp(8px, 0.65vw, 10px);
+    line-height: 1.55;
+}
+
+.rag-type-number {
+    font-size: 8px;
+}
+
+.rag-best-for {
+    padding: 5px 4px;
+
+    font-size: 8px;
+}
+
+
+/* 마지막 결론 */
+
+.rag-compare-conclusion span {
+    font-size: 8px;
+}
+
+.rag-compare-conclusion strong {
+    font-size: clamp(9px, 0.85vw, 12px);
+}
+/* =========================================================
+   RAG PAGE 02
+   SAME RAG · DIFFERENT RETRIEVAL
+========================================================= */
+
+.rag-compare-slide {
+    position: relative;
+
+    height: calc(100% - 46px);
+
+    padding:
+            12px
+            28px
+            10px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.rag-compare-slide
+.rag-slide-title-row {
+    gap: 12px;
+}
+
+
+.rag-compare-slide
+.rag-section-number {
+    font-size: 32px;
+}
+
+
+.rag-compare-slide
+.rag-small-title {
+    margin-bottom: 3px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.6px;
+}
+
+
+.rag-compare-slide
+.rag-slide-title-row h1 {
+    font-size: clamp(
+            32px,
+            2.7vw,
+            42px
+    );
+}
+
+
+.rag-compare-slide
+.rag-slide-title-row h1 span {
+    font-size: 0.78em;
+}
+
+
+/* =========================================================
+   SAME QUESTION
+========================================================= */
+
+.rag-compare-question {
+    width: min(
+            560px,
+            74%
+    );
+
+    min-height: 52px;
+
+    margin:
+            8px
+            auto
+            0;
+
+    padding:
+            8px
+            16px;
+
+    border:
+            2px solid
+            #657887;
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+}
+
+
+.rag-compare-question > .anticon {
+    color: #42657c;
+
+    font-size: 24px;
+}
+
+
+.rag-compare-question div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+
+.rag-compare-question small {
+    font-size: 8px;
+
+    letter-spacing: 1.1px;
+}
+
+
+.rag-compare-question strong {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   BRANCH
+========================================================= */
+
+.rag-branch-line {
+    position: relative;
+
+    width: 70%;
+
+    height: 34px;
+
+    margin: auto;
+}
+
+
+.rag-branch-main {
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 2px;
+    height: 12px;
+
+    transform:
+            translateX(-50%);
+
+    background: #9b927f;
+}
+
+
+.rag-branch-horizontal {
+    position: absolute;
+
+    left: 16.666%;
+    right: 16.666%;
+
+    top: 12px;
+
+    height: 2px;
+
+    background: #9b927f;
+}
+
+
+.rag-branch-down {
+    position: absolute;
+
+    top: 12px;
+
+    width: 2px;
+    height: 22px;
+
+    background: #9b927f;
+}
+
+
+.rag-branch-down.left {
+    left: 16.666%;
+}
+
+
+.rag-branch-down.center {
+    left: 50%;
+}
+
+
+.rag-branch-down.right {
+    right: 16.666%;
+}
+
+
+/* =========================================================
+   TYPE GRID
+========================================================= */
+
+.rag-type-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   TYPE CARD
+========================================================= */
+
+.rag-type-card {
+    position: relative;
+
+    min-height: 0;
+
+    height: 238px;
+
+    padding:
+            11px
+            14px
+            10px;
+
+    border:
+            2px solid
+            #6f7d86;
+
+    background: #ffffff;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.rag-type-card.keyword {
+    border-color: #987060;
+}
+
+
+.rag-type-card.vector {
+    border-color: #547e98;
+}
+
+
+.rag-type-card.graph {
+    border-color: #67835d;
+}
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.rag-type-number {
+    position: absolute;
+
+    left: 8px;
+    top: 7px;
+
+    font-size: 8px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.rag-type-icon {
+    width: 42px;
+    height: 42px;
+
+    margin:
+            0
+            auto
+            5px;
+
+    border:
+            2px solid
+            currentColor;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+.keyword .rag-type-icon {
+    color: #8f6255;
+}
+
+
+.vector .rag-type-icon {
+    color: #4f7892;
+}
+
+
+/* =========================================================
+   CARD SMALL LABEL
+========================================================= */
+
+.rag-type-card > small {
+    margin-bottom: 1px;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CARD MAIN WORD
+   단어 / 의미 / 관계
+========================================================= */
+
+.rag-type-card h2 {
+    margin:
+            2px
+            0
+            4px;
+
+    font-size: 28px;
+
+    line-height: 1.1;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.rag-type-line {
+    width: 32px;
+    height: 2px;
+
+    margin:
+            0
+            auto
+            6px;
+
+    background: #afa495;
+}
+
+
+/* =========================================================
+   SUB TITLE
+   문자열 일치 / 벡터 유사도 / 연결 구조 탐색
+========================================================= */
+
+.rag-type-card strong {
+    font-size: 12px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.rag-type-card p {
+    min-height: 0;
+
+    margin:
+            6px
+            0
+            8px;
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+    color: #666c70;
+}
+
+
+/* =========================================================
+   BEST FOR
+========================================================= */
+
+.rag-best-for {
+    width: 86%;
+
+    margin-top: auto;
+
+    padding:
+            5px
+            4px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.keyword .rag-best-for {
+    background: #f4e8e3;
+}
+
+
+.vector .rag-best-for {
+    background: #e5f0f5;
+}
+
+
+.graph .rag-best-for {
+    background: #e9f1e6;
+}
+
+
+/* =========================================================
+   GRAPH ICON
+========================================================= */
+
+.graph-icon {
+    position: relative;
+
+    border: 0;
+}
+
+
+.graph-icon::before,
+.graph-icon::after,
+.graph-icon i {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border:
+            2px solid
+            #627f59;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    content: "";
+}
+
+
+.graph-icon::before {
+    left: 3px;
+    bottom: 3px;
+}
+
+
+.graph-icon::after {
+    right: 3px;
+    bottom: 3px;
+}
+
+
+.graph-icon i:first-child {
+    left: 50%;
+    top: 1px;
+
+    transform:
+            translateX(-50%);
+}
+
+
+.graph-icon i:nth-child(2) {
+    width: 25px;
+    height: 2px;
+
+    left: 8px;
+    top: 25px;
+
+    border: 0;
+    border-radius: 0;
+
+    background: #627f59;
+
+    transform:
+            rotate(28deg);
+}
+
+
+.graph-icon i:nth-child(3) {
+    width: 25px;
+    height: 2px;
+
+    right: 8px;
+    top: 25px;
+
+    border: 0;
+    border-radius: 0;
+
+    background: #627f59;
+
+    transform:
+            rotate(-28deg);
+}
+
+
+/* =========================================================
+   CONCLUSION
+========================================================= */
+
+.rag-compare-conclusion {
+    margin-top: 8px;
+
+    padding:
+            7px
+            12px;
+
+    border:
+            1px solid
+            #a98743;
+
+    background: #f4ecd8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.rag-compare-conclusion span {
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.rag-compare-conclusion strong {
+    font-size: 12px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   SHORT HEIGHT
+========================================================= */
+
+@media (max-height: 800px) {
+
+    .rag-compare-slide {
+        padding:
+                9px
+                24px
+                8px;
+    }
+
+
+    .rag-compare-slide
+    .rag-section-number {
+        font-size: 27px;
+    }
+
+
+    .rag-compare-slide
+    .rag-slide-title-row h1 {
+        font-size: 30px;
+    }
+
+
+    .rag-compare-question {
+        min-height: 44px;
+
+        margin-top: 6px;
+
+        padding:
+                6px
+                12px;
+    }
+
+
+    .rag-branch-line {
+        height: 27px;
+    }
+
+
+    .rag-branch-main {
+        height: 9px;
+    }
+
+
+    .rag-branch-horizontal {
+        top: 9px;
+    }
+
+
+    .rag-branch-down {
+        top: 9px;
+
+        height: 18px;
+    }
+
+
+    .rag-type-card {
+        height: 205px;
+
+        padding:
+                8px
+                11px;
+    }
+
+
+    .rag-type-icon {
+        width: 36px;
+        height: 36px;
+
+        margin-bottom: 3px;
+    }
+
+
+    .rag-type-card h2 {
+        font-size: 24px;
+    }
+
+
+    .rag-type-card strong {
+        font-size: 10px;
+    }
+
+
+    .rag-type-card p {
+        margin:
+                4px
+                0
+                6px;
+
+        font-size: 8px;
+
+        line-height: 1.35;
+    }
+
+
+    .rag-best-for {
+        padding:
+                4px
+                3px;
+
+        font-size: 8px;
+    }
+
+
+    .rag-compare-conclusion {
+        margin-top: 6px;
+
+        padding:
+                5px
+                9px;
+    }
+
+
+    .rag-compare-conclusion strong {
+        font-size: 10px;
+    }
+}
+/* =========================================================
+   RAG PAGE 02 - FINAL PRESENTATION SIZE
+   카드 크기는 유지하고 내부 정보 크기를 확실히 확대
+========================================================= */
+
+
+/* ---------- 제목 ---------- */
+
+.rag-compare-slide .rag-section-number {
+    font-size: 34px;
+}
+
+.rag-compare-slide .rag-small-title {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+}
+
+.rag-compare-slide .rag-slide-title-row h1 {
+    font-size: 38px;
+}
+
+.rag-compare-slide .rag-slide-title-row h1 span {
+    font-size: 30px;
+}
+
+
+/* ---------- 위 질문 박스 ---------- */
+
+.rag-compare-question {
+    min-height: 58px;
+}
+
+.rag-compare-question > .anticon {
+    font-size: 25px;
+}
+
+.rag-compare-question small {
+    font-size: 9px;
+}
+
+.rag-compare-question strong {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   카드
+========================================================= */
+
+.rag-type-card {
+    height: 245px;
+
+    padding:
+            11px
+            16px
+            12px;
+}
+
+
+/* 01 / 02 / 03 */
+
+.rag-type-number {
+    font-size: 9px;
+}
+
+
+/* 아이콘 */
+
+.rag-type-icon {
+    width: 44px;
+    height: 44px;
+
+    margin-bottom: 5px;
+
+    font-size: 15px;
+}
+
+
+/* KEYWORD RAG / VECTOR RAG / GRAPH RAG */
+
+.rag-type-card > small {
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================================================
+   단어 / 의미 / 관계
+========================================================= */
+
+.rag-type-card h2 {
+    margin:
+            4px
+            0
+            6px;
+
+    font-size: 31px;
+
+    font-weight: 900;
+
+    line-height: 1.05;
+}
+
+
+/* 작은 선 */
+
+.rag-type-line {
+    width: 34px;
+    height: 2px;
+
+    margin:
+            0
+            auto
+            7px;
+}
+
+
+/* =========================================================
+   문자열 일치
+   벡터 유사도
+   연결 구조 탐색
+========================================================= */
+
+.rag-type-card strong {
+    font-size: 13px;
+
+    font-weight: 900;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   설명
+
+   이 부분이 지금 너무 작았음
+========================================================= */
+
+.rag-type-card p {
+    margin:
+            7px
+            auto
+            9px;
+
+    max-width: 92%;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+
+    color: #555f65;
+}
+
+
+/* =========================================================
+   정확성 중심 / 의미 중심 / 관계 중심
+========================================================= */
+
+.rag-best-for {
+    width: 84%;
+
+    padding:
+            6px
+            5px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   하단 결론
+========================================================= */
+
+.rag-compare-conclusion {
+    margin-top: 9px;
+
+    min-height: 39px;
+
+    padding:
+            7px
+            14px;
+}
+
+.rag-compare-conclusion span {
+    font-size: 8px;
+
+    font-weight: 900;
+}
+
+.rag-compare-conclusion strong {
+    font-size: 13px;
+
+    font-weight: 900;
+}

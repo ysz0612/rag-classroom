@@ -1,0 +1,160 @@
+.voice-status {
+    position: fixed;
+
+    z-index: 5000;
+
+    left: 50%;
+    bottom: 105px;
+
+    transform:
+            translateX(-50%);
+
+    min-width: 230px;
+    max-width: 420px;
+
+    padding:
+            9px
+            13px;
+
+    border:
+            2px solid
+            #46515c;
+
+    border-radius: 5px;
+
+    background: #202a34;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    box-shadow:
+            4px 4px 0
+            rgba(0, 0, 0, 0.22);
+}
+
+
+.voice-status-icon {
+    width: 33px;
+    height: 33px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+            1px solid
+            #596875;
+
+    background: #293640;
+
+    font-size: 16px;
+}
+
+
+.voice-status-text {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.voice-status-text strong {
+    color: #e5c365;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+.voice-status-text span {
+    color: #f1f1ef;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.voice-status-text small {
+    overflow: hidden;
+
+    color: #aeb8c0;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   LISTENING
+========================================================= */
+
+.voice-listening {
+    border-color: #749b8b;
+}
+
+
+.voice-listening
+.voice-status-icon {
+    color: #8dc0a8;
+
+    animation:
+            voicePulse
+            0.8s
+            ease-in-out
+            infinite alternate;
+}
+
+
+@keyframes voicePulse {
+
+    from {
+        transform:
+                scale(1);
+    }
+
+    to {
+        transform:
+                scale(1.12);
+    }
+
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.voice-success
+.voice-status-icon {
+    color: #88b67e;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.voice-error
+.voice-status-icon {
+    color: #c77a6c;
+}

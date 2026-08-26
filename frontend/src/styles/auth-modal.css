@@ -1,0 +1,697 @@
+/* =========================================================
+   AUTH MODAL
+========================================================= */
+
+.auth-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    background:
+            rgba(
+                    17,
+                    20,
+                    24,
+                    0.68
+            );
+
+    backdrop-filter:
+            blur(3px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   WINDOW
+========================================================= */
+
+.auth-modal-window {
+    width:
+            min(
+                    440px,
+                    94vw
+            );
+
+    max-height:
+            92vh;
+
+    overflow: hidden;
+
+    border:
+            3px solid
+            #25282d;
+
+    border-radius: 7px;
+
+    background: #eee8dd;
+
+    box-shadow:
+            8px 8px 0
+            rgba(
+                    23,
+                    24,
+                    27,
+                    0.28
+            );
+}
+
+
+.signup-window {
+    width:
+            min(
+                    470px,
+                    94vw
+            );
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.auth-modal-topbar {
+    height: 42px;
+
+    padding:
+            0 11px;
+
+    border-bottom:
+            3px solid
+            #1b1e22;
+
+    background: #303640;
+    color: #f4f4f4;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.auth-modal-topbar-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.9px;
+}
+
+
+.auth-window-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #85a878;
+
+    box-shadow:
+            0 0 6px
+            rgba(
+                    133,
+                    168,
+                    120,
+                    0.6
+            );
+}
+
+
+.auth-close-button {
+    width: 28px;
+    height: 28px;
+
+    border:
+            1px solid
+            #555d68;
+
+    border-radius: 3px;
+
+    background: #3d444f;
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.auth-close-button:hover {
+    background: #525b67;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.auth-modal-content {
+    overflow: auto;
+
+    max-height:
+            calc(
+                    92vh - 42px
+            );
+
+    padding:
+            24px
+            30px
+            22px;
+}
+
+
+.auth-modal-symbol {
+    width: 48px;
+    height: 48px;
+
+    margin:
+            0
+            auto
+            12px;
+
+    border:
+            3px solid
+            #323b46;
+
+    border-radius: 5px;
+
+    background: #51647a;
+    color: #f2dfaa;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    box-shadow:
+            4px 4px 0
+            rgba(
+                    51,
+                    46,
+                    40,
+                    0.13
+            );
+}
+
+
+.auth-modal-heading {
+    text-align: center;
+}
+
+
+.auth-modal-heading > span {
+    color: #92969b;
+
+    font-family:
+            Consolas,
+            monospace;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+
+.auth-modal-heading h2 {
+    margin:
+            5px
+            0
+            5px;
+
+    color: #262c33;
+
+    font-size: 25px;
+}
+
+
+.auth-modal-heading p {
+    margin: 0;
+
+    color: #7c7d7e;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.auth-form {
+    margin-top: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+
+.signup-form {
+    gap: 9px;
+}
+
+
+.auth-field {
+    display: block;
+}
+
+
+.auth-field > span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #555b61;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.auth-input-wrap {
+    height: 42px;
+
+    padding:
+            0
+            11px;
+
+    border:
+            2px solid
+            #c6beb3;
+
+    border-radius: 4px;
+
+    background: #faf8f4;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.auth-input-wrap:focus-within {
+    border-color: #627b96;
+
+    box-shadow:
+            inset
+            3px
+            0
+            0
+            #627b96;
+}
+
+
+.auth-input-wrap .anticon {
+    color: #7f8790;
+
+    font-size: 14px;
+}
+
+
+.auth-input-wrap input {
+    width: 100%;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #30343a;
+
+    font-size: 11px;
+}
+
+
+.auth-input-wrap input::placeholder {
+    color: #aaa8a4;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.auth-error {
+    padding:
+            8px
+            10px;
+
+    border:
+            1px solid
+            #c79990;
+
+    border-radius: 4px;
+
+    background: #f7e9e5;
+
+    color: #8c5149;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.auth-submit-button {
+    height: 43px;
+
+    margin-top: 3px;
+
+    border:
+            2px solid
+            #252a30;
+
+    border-radius: 4px;
+
+    background: #40536d;
+    color: #ffffff;
+
+    font-family:
+            Consolas,
+            Pretendard,
+            sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    box-shadow:
+            inset
+            0 0 0
+            1px
+            #62728a;
+}
+
+
+.auth-submit-button:hover:not(
+    :disabled
+) {
+    background: #4d6380;
+}
+
+
+.auth-submit-button:disabled {
+    opacity: 0.55;
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   SWITCH
+========================================================= */
+
+.auth-switch-area {
+    margin-top: 17px;
+
+    padding-top: 14px;
+
+    border-top:
+            1px solid
+            #d5cdc2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #858585;
+
+    font-size: 9px;
+}
+
+
+.auth-switch-area button {
+    border: none;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: #496682;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.auth-switch-area button:hover {
+    text-decoration: underline;
+}
+/* =========================================================
+   AUTH MODAL READABILITY OVERRIDE
+   기존 분위기는 유지하고
+   글자 / 입력창 / 버튼 가독성만 확대
+========================================================= */
+
+
+/* =========================================================
+   MODAL BOX
+========================================================= */
+
+.auth-modal {
+    width: min(92vw, 520px);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.auth-modal-title {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+
+.auth-modal-subtitle {
+    margin-top: 8px;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.auth-form {
+    gap: 16px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.auth-field label,
+.auth-label {
+    margin-bottom: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.auth-field input,
+.auth-input {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 14px;
+
+    font-size: 14px;
+
+    border-radius: 5px;
+}
+
+
+.auth-field input::placeholder,
+.auth-input::placeholder {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PASSWORD BUTTON / ICON
+========================================================= */
+
+.auth-password-button {
+    width: 42px;
+    height: 42px;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   MAIN BUTTON
+========================================================= */
+
+.auth-submit-button,
+.auth-primary-button {
+    min-height: 48px;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.auth-secondary-button {
+    min-height: 44px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   LOGIN / SIGNUP SWITCH TEXT
+========================================================= */
+
+.auth-switch {
+    margin-top: 16px;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+.auth-switch button {
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   ERROR / MESSAGE
+========================================================= */
+
+.auth-error,
+.auth-message {
+    padding: 9px 11px;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.auth-close-button {
+    width: 34px;
+    height: 34px;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   FOOTNOTE
+========================================================= */
+
+.auth-footnote,
+.auth-helper-text {
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SMALL SCREEN
+========================================================= */
+
+@media (max-width: 640px) {
+
+    .auth-modal {
+        width: calc(100vw - 28px);
+    }
+
+
+    .auth-modal-title {
+        font-size: 22px;
+    }
+
+
+    .auth-modal-subtitle {
+        font-size: 12px;
+    }
+
+
+    .auth-field input,
+    .auth-input {
+        height: 46px;
+
+        font-size: 13px;
+    }
+
+
+    .auth-submit-button,
+    .auth-primary-button {
+        min-height: 46px;
+
+        font-size: 13px;
+    }
+
+}
