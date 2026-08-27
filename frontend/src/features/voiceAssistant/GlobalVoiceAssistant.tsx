@@ -230,16 +230,39 @@ export default function GlobalVoiceAssistant() {
     ] = useState(0);
 
 
+    const [
+        ariImagesReady,
+        setAriImagesReady,
+    ] = useState(false);
+
+
     useEffect(() => {
-        ARI_ALL_FRAMES.forEach((src) => {
+        let cancelled = false;
+
+        const images = ARI_ALL_FRAMES.map((src) => {
             const image = new Image();
             image.src = src;
+            return image;
         });
+
+        void Promise.allSettled(
+            images.map((image) => image.decode()),
+        ).then(() => {
+            if (!cancelled) {
+                setAriImagesReady(true);
+            }
+        });
+
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
 
     const ariFrames =
-        fairyState === "processing"
+        !ariImagesReady
+            ? ARI_IDLE_FRAMES
+            : fairyState === "processing"
             ? ARI_THINKING_FRAMES
             : fairyState === "success"
                 ? ARI_HAPPY_FRAMES
@@ -248,6 +271,10 @@ export default function GlobalVoiceAssistant() {
 
     useEffect(() => {
         setAriFrameIndex(0);
+
+        if (!ariImagesReady) {
+            return;
+        }
 
         const frameDuration =
             fairyState === "processing"
@@ -264,7 +291,7 @@ export default function GlobalVoiceAssistant() {
         }, frameDuration);
 
         return () => window.clearInterval(timer);
-    }, [ariFrames, fairyState]);
+    }, [ariFrames, ariImagesReady, fairyState]);
 
 
     const [
@@ -1506,7 +1533,6 @@ export default function GlobalVoiceAssistant() {
             >
 
                 <img
-                    key={`${fairyState}-${ariFrames[ariFrameIndex] ?? ariFrames[0]}`}
                     src={ariFrames[ariFrameIndex] ?? ariFrames[0]}
                     alt="AI 학습 도우미 아리"
                     className="global-ari-character-image"
