@@ -158,6 +158,24 @@ const ARI_IDLE_FRAMES = [
     "/characters/ari/ari-idle-03.png",
 ];
 
+const ARI_THINKING_FRAMES = [
+    "/characters/ari/ari-thinking-01.jpg",
+    "/characters/ari/ari-thinking-02.jpg",
+    "/characters/ari/ari-thinking-03.jpg",
+    "/characters/ari/ari-thinking-04.jpg",
+];
+
+const ARI_HAPPY_FRAMES = [
+    "/characters/ari/ari-happy-01.jpg",
+    "/characters/ari/ari-happy-02.jpg",
+];
+
+const ARI_ALL_FRAMES = [
+    ...ARI_IDLE_FRAMES,
+    ...ARI_THINKING_FRAMES,
+    ...ARI_HAPPY_FRAMES,
+];
+
 
 /* =========================================================
    COMPONENT
@@ -213,20 +231,40 @@ export default function GlobalVoiceAssistant() {
 
 
     useEffect(() => {
-        ARI_IDLE_FRAMES.forEach((src) => {
+        ARI_ALL_FRAMES.forEach((src) => {
             const image = new Image();
             image.src = src;
         });
+    }, []);
+
+
+    const ariFrames =
+        fairyState === "processing"
+            ? ARI_THINKING_FRAMES
+            : fairyState === "success"
+                ? ARI_HAPPY_FRAMES
+                : ARI_IDLE_FRAMES;
+
+
+    useEffect(() => {
+        setAriFrameIndex(0);
+
+        const frameDuration =
+            fairyState === "processing"
+                ? 300
+                : fairyState === "success"
+                    ? 260
+                    : 520;
 
         const timer = window.setInterval(() => {
             setAriFrameIndex(
                 (current) =>
-                    (current + 1) % ARI_IDLE_FRAMES.length,
+                    (current + 1) % ariFrames.length,
             );
-        }, 520);
+        }, frameDuration);
 
         return () => window.clearInterval(timer);
-    }, []);
+    }, [ariFrames, fairyState]);
 
 
     const [
@@ -325,6 +363,27 @@ export default function GlobalVoiceAssistant() {
                     bubbleTimerRef.current =
                         window.setTimeout(
                             () => {
+
+                                if (state === "processing") {
+                                    setBubbleMessage("처리를 완료했어요!");
+                                    setFairyState("success");
+                                    setBubbleVisible(true);
+
+                                    bubbleTimerRef.current =
+                                        window.setTimeout(
+                                            () => {
+                                                setBubbleVisible(false);
+                                                setFairyState(
+                                                    shouldListenRef.current
+                                                        ? "listening"
+                                                        : "idle",
+                                                );
+                                            },
+                                            1600,
+                                        );
+
+                                    return;
+                                }
 
                                 setBubbleVisible(
                                     false,
@@ -1433,7 +1492,7 @@ export default function GlobalVoiceAssistant() {
             >
 
                 <img
-                    src={ARI_IDLE_FRAMES[ariFrameIndex]}
+                    src={ariFrames[ariFrameIndex] ?? ariFrames[0]}
                     alt="AI 학습 도우미 아리"
                     className="global-ari-character-image"
                     draggable={false}
