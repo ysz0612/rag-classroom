@@ -4,7 +4,6 @@ import {
 } from "@ant-design/icons";
 
 import "./vector-lesson.css";
-import RagExamplePage from "./RagExamplePage";
 
 
 interface VectorLessonProps {
@@ -313,10 +312,10 @@ export default function VectorLesson({
 
 
             {/* =====================================================
-                PAGE 02
+                PAGE 02 · 활용 분야와 한계
             ===================================================== */}
 
-            {pageIndex === 2 && (
+            {pageIndex === 1 && (
                 <section className="vector-page vector-page-two">
 
                     {/* TITLE */}
@@ -324,7 +323,7 @@ export default function VectorLesson({
                     <header className="vector-page-title">
 
                         <span className="vector-page-number">
-                            03.
+                            02.
                         </span>
 
                         <div>
@@ -632,10 +631,6 @@ export default function VectorLesson({
                     </div>
 
                 </section>
-            )}
-
-            {pageIndex === 1 && (
-                <RagExamplePage type="vector" number="02" />
             )}
 
         </div>

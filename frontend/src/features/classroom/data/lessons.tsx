@@ -37,7 +37,6 @@ export const lessons: Lesson[] = [
         icon: <BranchesOutlined />,
         pages: [
             "표현이 달라도 의미를 찾으려면?",
-            "Vector RAG의 상품 선택 과정",
             "Vector RAG의 활용 분야와 한계",
         ],
     },
