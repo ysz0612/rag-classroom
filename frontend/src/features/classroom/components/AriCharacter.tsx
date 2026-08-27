@@ -19,15 +19,15 @@ const IDLE_FRAME_PATHS = [
 ];
 
 const THINKING_FRAME_PATHS = [
-    "/characters/ari/ari-thinking-01.jpg",
-    "/characters/ari/ari-thinking-02.jpg",
-    "/characters/ari/ari-thinking-03.jpg",
-    "/characters/ari/ari-thinking-04.jpg",
+    "/characters/ari/ari-thinking-01.png",
+    "/characters/ari/ari-thinking-02.png",
+    "/characters/ari/ari-thinking-03.png",
+    "/characters/ari/ari-thinking-04.png",
 ];
 
 const HAPPY_FRAME_PATHS = [
-    "/characters/ari/ari-happy-01.jpg",
-    "/characters/ari/ari-happy-02.jpg",
+    "/characters/ari/ari-happy-01.png",
+    "/characters/ari/ari-happy-02.png",
 ];
 
 const ALL_FRAME_PATHS = [
