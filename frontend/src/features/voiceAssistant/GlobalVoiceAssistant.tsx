@@ -159,15 +159,15 @@ const ARI_IDLE_FRAMES = [
 ];
 
 const ARI_THINKING_FRAMES = [
-    "/characters/ari/ari-thinking-01.jpg",
-    "/characters/ari/ari-thinking-02.jpg",
-    "/characters/ari/ari-thinking-03.jpg",
-    "/characters/ari/ari-thinking-04.jpg",
+    "/characters/ari/ari-thinking-01.png",
+    "/characters/ari/ari-thinking-02.png",
+    "/characters/ari/ari-thinking-03.png",
+    "/characters/ari/ari-thinking-04.png",
 ];
 
 const ARI_HAPPY_FRAMES = [
-    "/characters/ari/ari-happy-01.jpg",
-    "/characters/ari/ari-happy-02.jpg",
+    "/characters/ari/ari-happy-01.png",
+    "/characters/ari/ari-happy-02.png",
 ];
 
 const ARI_ALL_FRAMES = [
@@ -1489,13 +1489,57 @@ export default function GlobalVoiceAssistant() {
                     }`
                 }
                 title={`${FAIRY_NAME} 음성 비서`}
+                style={{
+                    display: "flex",
+                    width: "210px",
+                    height: "210px",
+                    minWidth: "210px",
+                    minHeight: "210px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "visible",
+                    opacity: 1,
+                    visibility: "visible",
+                    position: "relative",
+                    zIndex: 10,
+                }}
             >
 
                 <img
+                    key={`${fairyState}-${ariFrames[ariFrameIndex] ?? ariFrames[0]}`}
                     src={ariFrames[ariFrameIndex] ?? ariFrames[0]}
                     alt="AI 학습 도우미 아리"
                     className="global-ari-character-image"
                     draggable={false}
+                    onError={(event) => {
+                        const fallbackSrc =
+                            "/characters/ari/ari-idle.png";
+
+                        if (
+                            !event.currentTarget.src.endsWith(
+                                fallbackSrc,
+                            )
+                        ) {
+                            event.currentTarget.src =
+                                fallbackSrc;
+                        }
+                    }}
+                    style={{
+                        display: "block",
+                        width: "210px",
+                        height: "210px",
+                        minWidth: "210px",
+                        minHeight: "210px",
+                        maxWidth: "none",
+                        maxHeight: "none",
+                        objectFit: "contain",
+                        opacity: 1,
+                        visibility: "visible",
+                        position: "relative",
+                        zIndex: 5,
+                        background: "transparent",
+                        pointerEvents: "none",
+                    }}
                 />
 
                 <div
